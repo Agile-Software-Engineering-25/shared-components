@@ -10,4 +10,3 @@ export type { InputProps } from "./components/Input/Input";
 
 // Export theme utilities
 export { createCustomTheme } from "./theme/theme";
-export type { CustomTheme } from "./theme/theme";
