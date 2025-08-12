@@ -66,6 +66,7 @@
     "access": "restricted"
   },
   "optionalDependencies": {
-    "@rollup/rollup-darwin-arm64": "^4.46.2"
+    "@rollup/rollup-darwin-arm64": "^4.46.2",
+    "@rollup/rollup-linux-x64-gnu": "^4.46.2"
   }
 }
