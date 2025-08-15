@@ -8,6 +8,15 @@ const packageJson = require("./package.json");
 
 module.exports = [
   {
+    onwarn(warning, warn) {
+      if (
+        warning.code === 'MODULE_LEVEL_DIRECTIVE' &&
+        warning.message.includes('use client')
+      ) {
+        return;
+      }
+      warn(warning);
+    },
     input: "src/index.ts",
     output: [
       {
