@@ -16,7 +16,8 @@
     "declaration": true,
     "declarationMap": true,
     "outDir": "dist",
-    "module": "esnext"
+    "module": "esnext",
+    "verbatimModuleSyntax": true
   },
   "include": ["src/**/*"],
   "exclude": [
