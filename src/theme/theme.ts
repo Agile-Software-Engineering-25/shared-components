@@ -1,4 +1,5 @@
-import { CssVarsThemeOptions, extendTheme } from "@mui/material";
+import { extendTheme } from "@mui/material";
+import type { CssVarsThemeOptions } from "@mui/material";
 
 export const createCustomTheme = (
   customizations?: CssVarsThemeOptions | undefined

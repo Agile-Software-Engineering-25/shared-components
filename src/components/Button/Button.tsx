@@ -1,5 +1,6 @@
 import React from "react";
-import { Button as JoyButton, ButtonProps as JoyButtonProps } from "@mui/joy";
+import { Button as JoyButton } from "@mui/joy";
+import type { ButtonProps as JoyButtonProps } from "@mui/joy";
 
 export interface ButtonProps extends Omit<JoyButtonProps, "variant"> {
   variant?: "solid" | "soft" | "outlined" | "plain";

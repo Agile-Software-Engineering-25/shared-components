@@ -1,10 +1,6 @@
 import React from "react";
-import {
-  Card as JoyCard,
-  CardProps as JoyCardProps,
-  CardContent,
-  Typography,
-} from "@mui/joy";
+import { Card as JoyCard, CardContent, Typography } from "@mui/joy";
+import type { CardProps as JoyCardProps } from "@mui/joy";
 
 export interface CardProps extends Omit<JoyCardProps, "variant"> {
   variant?: "soft" | "outlined" | "solid" | "plain";
