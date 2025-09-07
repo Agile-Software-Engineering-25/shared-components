@@ -1,184 +1,60 @@
 import { extendTheme } from '@mui/joy/styles';
 
-
-declare module '@mui/joy/styles' {
-  interface PalettePrimaryOverrides {
-    20: true;
-    200: false;
-    300: false;
-    400: false;
-    500: false;
-    600: false;
-    700: false;
-    800: false;
-    900: false;
-    dark: true;
-  }
-  interface PaletteDangerOverrides {
-    20: true;
-    200: false;
-    300: false;
-    400: false;
-    500: false;
-    600: false;
-    700: false;
-    800: false;
-    900: false;
-    dark: true;
-  }
-  interface PaletteSuccessOverrides {
-    20: true;
-    200: false;
-    300: false;
-    400: false;
-    500: false;
-    600: false;
-    700: false;
-    800: false;
-    900: false;
-  }
-  interface PaletteWarningOverrides {
-    20: true;
-    200: false;
-    300: false;
-    400: false;
-    500: false;
-    600: false;
-    700: false;
-    800: false;
-    900: false;
-  }
-  interface TypographySystemOverrides {
-    h1: true;
-    h2: true;
-    h3: true;
-    h4: true;
-    body: true;
-    button_large: true;
-    button_medium: true;
-    button_small: true;
-  }
-}
-
 export type CustomTheme = ReturnType<typeof extendTheme>;
 
 export function createCustomTheme(
-  customization: Partial<CustomTheme > = {}
-): CustomTheme  {
+  customization: Partial<CustomTheme> = {}
+): CustomTheme {
   return extendTheme({
     colorSchemes: {
       light: {
         palette: {
           primary: {
-            "20": "#CCD5E2",
-            "50": "#8096B6",
-            "100": "#002E6D",
-            "200": undefined,
-            "300": undefined,
-            "400": undefined,
-            "500": undefined,
-            "600": undefined,
-            "700": undefined,
-            "800": undefined,
-            "900": undefined,
+            200: "#CCD5E2",
+            400: "#8096B6",
+            500: "#002E6D",
           },
           success: {
-            "20": "#CFDECF",
-            "50": "#87AC88",
-            "100": "#0E5910",
-            "200": undefined,
-            "300": undefined,
-            "400": undefined,
-            "500": undefined,
-            "600": undefined,
-            "700": undefined,
-            "800": undefined,
-            "900": undefined,
+            200: "#CFDECF",
+            400: "#87AC88",
+            500: "#0E5910",
           },
           danger: {
-            "20": "#EED1DA",
-            "50": "#D58DA2",
-            "100": "#AC1B44",
-            "200": undefined,
-            "300": undefined,
-            "400": undefined,
-            "500": undefined,
-            "600": undefined,
-            "700": undefined,
-            "800": undefined,
-            "900": undefined,
-            dark: "#8F1336",
+            200: "#EED1DA",
+            400: "#D58DA2",
+            500: "#AC1B44",
+            700: "#8F1336",
           },
           warning: {
-            "20": "#E7DBD0",
-            "50": "#C3A588",
-            "100": "#874D12",
-            "200": undefined,
-            "300": undefined,
-            "400": undefined,
-            "500": undefined,
-            "600": undefined,
-            "700": undefined,
-            "800": undefined,
-            "900": undefined,
+            200: "#E7DBD0",
+            400: "#C3A588",
+            500: "#874D12",
           },
         },
       },
       dark: {
         palette: {
-          warning: {
-            "20": "#E7DBD0",
-            "50": "#C3A588",
-            "100": "#874D12",
-            "200": undefined,
-            "300": undefined,
-            "400": undefined,
-            "500": undefined,
-            "600": undefined,
-            "700": undefined,
-            "800": undefined,
-            "900": undefined,
+          primary: {
+            200: "#CCEEFB",
+            400: "#80D4F4",
+            500: "#00ACE9",
+            700: "#078BB9",
           },
           success: {
-            "20": "#CFDECF",
-            "50": "#87AC88",
-            "100": "#0E5910",
-            "200": undefined,
-            "300": undefined,
-            "400": undefined,
-            "500": undefined,
-            "600": undefined,
-            "700": undefined,
-            "800": undefined,
-            "900": undefined,
+            200: "#CFDECF",
+            400: "#87AC88",
+            500: "#0E5910",
           },
           danger: {
-            "20": "#EED1DA",
-            "50": "#D58DA2",
-            "100": "#AC1B44",
-            "200": undefined,
-            "300": undefined,
-            "400": undefined,
-            "500": undefined,
-            "600": undefined,
-            "700": undefined,
-            "800": undefined,
-            "900": undefined,
-            dark: "#8F1336",
+            200: "#EED1DA",
+            400: "#D58DA2",
+            500: "#AC1B44",
+            700: "#8F1336",
           },
-          primary: {
-            "20": "#CCEEFB",
-            "50": "#80D4F4",
-            "100": "#00ACE9",
-            "200": undefined,
-            "300": undefined,
-            "400": undefined,
-            "500": undefined,
-            "600": undefined,
-            "700": undefined,
-            "800": undefined,
-            "900": undefined,
-            dark: "#078BB9",
+          warning: {
+            200: "#E7DBD0",
+            400: "#C3A588",
+            500: "#874D12",
           },
         },
       },
@@ -186,69 +62,47 @@ export function createCustomTheme(
     typography: {
       h1: {
         fontFamily: "'Poppins', sans-serif",
-        fontWeight: 500,           // Medium
-        fontStyle: 'normal',
+        fontWeight: 500,
         fontSize: '64px',
         lineHeight: 1,
-        letterSpacing: 0,
       },
       h2: {
         fontFamily: "'Poppins', sans-serif",
-        fontWeight: 600,           // SemiBold
-        fontStyle: 'normal',
+        fontWeight: 600,
         fontSize: '36px',
         lineHeight: 1,
-        letterSpacing: 0,
       },
       h3: {
         fontFamily: "'Poppins', sans-serif",
-        fontWeight: 600,           // SemiBold
-        fontStyle: 'normal',
+        fontWeight: 600,
         fontSize: '32px',
         lineHeight: 1,
-        letterSpacing: 0,
       },
       h4: {
         fontFamily: "'Poppins', sans-serif",
-        fontWeight: 300,           // Light
-        fontStyle: 'normal',
+        fontWeight: 300,
         fontSize: '24px',
         lineHeight: 1,
-        letterSpacing: 0,
       },
-      body: {
+      'body-lg': {
         fontFamily: "'Poppins', sans-serif",
-        fontWeight: 300,           // Light
-        fontStyle: 'normal',
+        fontWeight: 600,
         fontSize: '16px',
         lineHeight: 1,
-        letterSpacing: 0,
-      },
-      button_large: {
-        fontFamily: "'Poppins', sans-serif",
-        fontWeight: 600,           // SemiBold
-        fontStyle: 'normal',
-        fontSize: '16px',
-        lineHeight: 1,
-        letterSpacing: 0,
         textTransform: 'uppercase',
       },
-      button_medium: {
+      'body-md': {
         fontFamily: "'Poppins', sans-serif",
-        fontWeight: 600,           // SemiBold
-        fontStyle: 'normal',
+        fontWeight: 600,
         fontSize: '14px',
         lineHeight: 1,
-        letterSpacing: 0,
         textTransform: 'uppercase',
       },
-      button_small: {
+      'body-sm': {
         fontFamily: "'Poppins', sans-serif",
-        fontWeight: 600,           // SemiBold
-        fontStyle: 'normal',
+        fontWeight: 600,
         fontSize: '14px',
         lineHeight: 1,
-        letterSpacing: 0,
         textTransform: 'uppercase',
       },
     },
