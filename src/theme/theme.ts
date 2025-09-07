@@ -1,4 +1,4 @@
-import { extendTheme } from '@mui/joy/styles';
+import { extendTheme, type Theme } from '@mui/joy/styles';
 
 
 declare module '@mui/joy/styles' {
@@ -50,7 +50,9 @@ declare module '@mui/joy/styles' {
   }
 }
 
-export function createCustomTheme(customization: object = {}) {
+export function createCustomTheme(
+  customization: Partial<Theme> = {}
+): Theme {
   return extendTheme({
     colorSchemes: {
       light: {
