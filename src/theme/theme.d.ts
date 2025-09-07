@@ -45,4 +45,15 @@ declare module '@mui/joy/styles' {
     800: false;
     900: false;
   }
+  interface TypographySystemOverrides {
+    h1: true;
+    h2: true;
+    h3: true;
+    h4: true;
+    body: true;
+    button_large: true;
+    button_medium: true;
+    button_small: true;
+  }
 }
+

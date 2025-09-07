@@ -48,6 +48,16 @@ declare module '@mui/joy/styles' {
     800: false;
     900: false;
   }
+  interface TypographySystemOverrides {
+    h1: true;
+    h2: true;
+    h3: true;
+    h4: true;
+    body: true;
+    button_large: true;
+    button_medium: true;
+    button_small: true;
+  }
 }
 
 export type CustomTheme = ReturnType<typeof extendTheme>;
@@ -171,6 +181,75 @@ export function createCustomTheme(
             dark: "#078BB9",
           },
         },
+      },
+    },
+    typography: {
+      h1: {
+        fontFamily: "'Poppins', sans-serif",
+        fontWeight: 500,           // Medium
+        fontStyle: 'normal',
+        fontSize: '64px',
+        lineHeight: 1,
+        letterSpacing: 0,
+      },
+      h2: {
+        fontFamily: "'Poppins', sans-serif",
+        fontWeight: 600,           // SemiBold
+        fontStyle: 'normal',
+        fontSize: '36px',
+        lineHeight: 1,
+        letterSpacing: 0,
+      },
+      h3: {
+        fontFamily: "'Poppins', sans-serif",
+        fontWeight: 600,           // SemiBold
+        fontStyle: 'normal',
+        fontSize: '32px',
+        lineHeight: 1,
+        letterSpacing: 0,
+      },
+      h4: {
+        fontFamily: "'Poppins', sans-serif",
+        fontWeight: 300,           // Light
+        fontStyle: 'normal',
+        fontSize: '24px',
+        lineHeight: 1,
+        letterSpacing: 0,
+      },
+      body: {
+        fontFamily: "'Poppins', sans-serif",
+        fontWeight: 300,           // Light
+        fontStyle: 'normal',
+        fontSize: '16px',
+        lineHeight: 1,
+        letterSpacing: 0,
+      },
+      button_large: {
+        fontFamily: "'Poppins', sans-serif",
+        fontWeight: 600,           // SemiBold
+        fontStyle: 'normal',
+        fontSize: '16px',
+        lineHeight: 1,
+        letterSpacing: 0,
+        textTransform: 'uppercase',
+      },
+      button_medium: {
+        fontFamily: "'Poppins', sans-serif",
+        fontWeight: 600,           // SemiBold
+        fontStyle: 'normal',
+        fontSize: '14px',
+        lineHeight: 1,
+        letterSpacing: 0,
+        textTransform: 'uppercase',
+      },
+      button_small: {
+        fontFamily: "'Poppins', sans-serif",
+        fontWeight: 600,           // SemiBold
+        fontStyle: 'normal',
+        fontSize: '14px',
+        lineHeight: 1,
+        letterSpacing: 0,
+        textTransform: 'uppercase',
       },
     },
     ...customization,
