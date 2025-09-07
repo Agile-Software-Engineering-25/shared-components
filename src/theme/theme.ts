@@ -85,19 +85,19 @@ export function createCustomJoyTheme(): CustomJoyTheme {
       },
       "body-lg": {
         fontFamily: "'Poppins', sans-serif",
-        fontWeight: 600,
+        fontWeight: 300,
         fontSize: "16px",
         lineHeight: 1,
       },
       "body-md": {
         fontFamily: "'Poppins', sans-serif",
-        fontWeight: 600,
+        fontWeight: 300,
         fontSize: "14px",
         lineHeight: 1,
       },
       "body-sm": {
         fontFamily: "'Poppins', sans-serif",
-        fontWeight: 600,
+        fontWeight: 300,
         fontSize: "14px",
         lineHeight: 1,
       },
@@ -157,17 +157,17 @@ export function createCustomMuiTheme() {
         lineHeight: 1,
       },
       button: {
-        fontWeight: 600,
+        fontWeight: 300,
         fontSize: "16px",
         lineHeight: 1,
       },
       body1: {
-        fontWeight: 600,
+        fontWeight: 300,
         fontSize: "14px",
         lineHeight: 1,
       },
       body2: {
-        fontWeight: 600,
+        fontWeight: 300,
         fontSize: "14px",
         lineHeight: 1,
       },
