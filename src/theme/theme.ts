@@ -1,11 +1,10 @@
-import { extendTheme } from "@mui/joy/styles";
+import { extendTheme as extendJoyTheme } from "@mui/joy/styles";
+import { createTheme as extendMuiTheme } from "@mui/material/styles";
 
-export type CustomTheme = ReturnType<typeof extendTheme>;
+export type CustomJoyTheme = ReturnType<typeof extendJoyTheme>;
 
-export function createCustomTheme(
-  customization: Partial<CustomTheme> = {}
-): CustomTheme {
-  return extendTheme({
+export function createCustomJoyTheme(): CustomJoyTheme {
+  return extendJoyTheme({
     colorSchemes: {
       light: {
         palette: {
@@ -106,6 +105,78 @@ export function createCustomTheme(
         textTransform: "uppercase",
       },
     },
-    ...customization,
+  });
+}
+
+export function createCustomMuiTheme() {
+  return extendMuiTheme({
+    palette: {
+      mode: "light", // can be toggled to "dark"
+      primary: {
+        light: "#CCD5E2", // 200
+        main: "#002E6D", // 500
+        dark: "#8096B6", // 400 as fallback dark
+        contrastText: "#fff",
+      },
+      success: {
+        light: "#CFDECF", // 200
+        main: "#0E5910", // 500
+        dark: "#87AC88", // 400
+        contrastText: "#fff",
+      },
+      error: {
+        light: "#EED1DA", // 200
+        main: "#AC1B44", // 500
+        dark: "#8F1336", // 700
+        contrastText: "#fff",
+      },
+      warning: {
+        light: "#E7DBD0", // 200
+        main: "#874D12", // 500
+        dark: "#C3A588", // 400
+        contrastText: "#000",
+      },
+    },
+    typography: {
+      fontFamily: "'Poppins', sans-serif",
+      h1: {
+        fontWeight: 500,
+        fontSize: "64px",
+        lineHeight: 1,
+      },
+      h2: {
+        fontWeight: 600,
+        fontSize: "36px",
+        lineHeight: 1,
+      },
+      h3: {
+        fontWeight: 600,
+        fontSize: "32px",
+        lineHeight: 1,
+      },
+      h4: {
+        fontWeight: 300,
+        fontSize: "24px",
+        lineHeight: 1,
+      },
+      button: {
+        fontWeight: 600,
+        fontSize: "16px",
+        lineHeight: 1,
+        textTransform: "uppercase",
+      },
+      body1: {
+        fontWeight: 600,
+        fontSize: "14px",
+        lineHeight: 1,
+        textTransform: "uppercase",
+      },
+      body2: {
+        fontWeight: 600,
+        fontSize: "14px",
+        lineHeight: 1,
+        textTransform: "uppercase",
+      },
+    },
   });
 }

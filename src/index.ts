@@ -9,4 +9,4 @@ export type { CardProps } from "./components/Card/Card";
 export type { InputProps } from "./components/Input/Input";
 
 // Export theme utilities
-export { createCustomTheme } from "./theme/theme";
+export { createCustomJoyTheme, createCustomMuiTheme } from "./theme/theme";
