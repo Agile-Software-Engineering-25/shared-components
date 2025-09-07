@@ -88,21 +88,18 @@ export function createCustomJoyTheme(): CustomJoyTheme {
         fontWeight: 600,
         fontSize: "16px",
         lineHeight: 1,
-        textTransform: "uppercase",
       },
       "body-md": {
         fontFamily: "'Poppins', sans-serif",
         fontWeight: 600,
         fontSize: "14px",
         lineHeight: 1,
-        textTransform: "uppercase",
       },
       "body-sm": {
         fontFamily: "'Poppins', sans-serif",
         fontWeight: 600,
         fontSize: "14px",
         lineHeight: 1,
-        textTransform: "uppercase",
       },
     },
   });
@@ -163,19 +160,16 @@ export function createCustomMuiTheme() {
         fontWeight: 600,
         fontSize: "16px",
         lineHeight: 1,
-        textTransform: "uppercase",
       },
       body1: {
         fontWeight: 600,
         fontSize: "14px",
         lineHeight: 1,
-        textTransform: "uppercase",
       },
       body2: {
         fontWeight: 600,
         fontSize: "14px",
         lineHeight: 1,
-        textTransform: "uppercase",
       },
     },
   });
