@@ -34,7 +34,7 @@ const GenericModal: React.FC<ModalProps> = ({
   modalSX,
   modalDialogSX,
   children,
-}) => {
+}: ModalProps): JSX.Element => {
   return (
     <Modal
       open={open}
