@@ -2,9 +2,6 @@
 
 A TypeScript-based React component library built with Material-UI Joy, designed to be used as a submodule in frontend projects.
 
-## ⚠️Disclaimer⚠️
-
-All Components and the joy theme in this repository are **ONLY** examples and **NEED** to be exchanged with real ones. Expect them to be deleted or massively changed.
 
 ## Installation
 
@@ -14,7 +11,7 @@ See the [frontend-template](https://github.com/Agile-Software-Engineering-25/fro
 
 ### Custom Joy Theme
 
-The library exposes a custom them for `@mui/joy`. You can further customize the theme by passing an object to the function. Usage example:
+The library exposes a custom theme for `@mui/joy`. You can further customize the theme by passing an object to the function. Usage example:
 
 ```tsx
 import React from "react";
@@ -30,57 +27,7 @@ function App() {
 }
 ```
 
-### Custom Components
-
-Many components will be exported by the library. Simply import and use them like any other component.
-
-```tsx
-import { Button, Card, Input, Modal } from "@agile-software/shared-components";
-
-function MyComponent() {
-  return (
-    <Card title="Welcome" subtitle="Get started with our components">
-      <Input label="Email" placeholder="Enter your email" required />
-      <Button variant="solid" color="primary">
-        Submit
-      </Button>
-    </Card>
-  );
-}
-```
-
 ## Available Components
-
-### Button
-
-A customizable button component with multiple variants and states.
-
-```tsx
-import { Button } from '@agile-software/shared-components';
-
-// Basic usage
-<Button>Click me</Button>
-
-// With props
-<Button
-  variant="outlined"
-  color="danger"
-  size="lg"
-  loading={isLoading}
-  fullWidth
->
-  Submit
-</Button>
-```
-
-**Props:**
-
-- `variant`: 'solid' | 'soft' | 'outlined' | 'plain'
-- `size`: 'sm' | 'md' | 'lg'
-- `color`: 'primary' | 'neutral' | 'danger' | 'success' | 'warning'
-- `loading`: boolean
-- `fullWidth`: boolean
-- All standard button props
 
 ### Modal
 
@@ -119,56 +66,6 @@ function MyComponent() {
 - `modalSX`: SxProps (optional) - Additional styles for the modal backdrop
 - `modalDialogSX`: SxProps (optional) - Additional styles for the modal dialog
 - `children`: ReactNode - The content to be rendered inside the modal
-
-
-
-### Card
-
-A container component for grouping related content.
-
-```tsx
-import { Card } from "@agile-software/shared-components";
-
-<Card title="Card Title" subtitle="Optional subtitle" variant="outlined">
-  <p>Card content goes here</p>
-</Card>;
-```
-
-**Props:**
-
-- `title`: string
-- `subtitle`: string
-- `variant`: 'soft' | 'outlined' | 'solid' | 'plain'
-- `size`: 'sm' | 'md' | 'lg'
-- `color`: 'primary' | 'neutral' | 'danger' | 'success' | 'warning'
-
-### Input
-
-A form input component with label and validation support.
-
-```tsx
-import { Input } from "@agile-software/shared-components";
-
-<Input
-  label="Email Address"
-  placeholder="Enter your email"
-  helperText="We'll never share your email"
-  required
-  error={hasError}
-  fullWidth
-/>;
-```
-
-**Props:**
-
-- `label`: string
-- `helperText`: string
-- `error`: boolean
-- `required`: boolean
-- `fullWidth`: boolean
-- `variant`: 'soft' | 'outlined' | 'solid' | 'plain'
-- `size`: 'sm' | 'md' | 'lg'
-- `color`: 'primary' | 'neutral' | 'danger' | 'success' | 'warning'
 
 ## Development
 
