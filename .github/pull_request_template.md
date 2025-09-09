@@ -2,6 +2,7 @@
 
 ## Component Overview
 **Component Name:** 
+<!-- Provide the name of this component -->
 
 **Brief Description:** 
 <!-- Provide a short description of what this component does and its primary use cases -->
@@ -14,8 +15,6 @@
 
 ### Design Team Review
 - [ ] Component matches design specifications
-- [ ] All visual requirements are implemented correctly
-- [ ] Component follows design system guidelines
 
 ## 🔄 Implementation Differences (Optional)
 
