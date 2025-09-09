@@ -1,5 +1,6 @@
 import React, { type ReactNode } from 'react';
-import { Divider, Modal, ModalClose, ModalDialog, Typography, type SxProps } from '@mui/joy';
+import { Divider, Modal, ModalClose, ModalDialog, Typography } from '@mui/joy';
+import type { SxProps } from '@mui/joy/styles/types';
 
 export interface ModalProps {
   header: string;
