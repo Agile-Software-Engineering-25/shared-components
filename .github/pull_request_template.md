@@ -33,7 +33,7 @@
 ### Documentation & Communication
 - [ ] Component is documented in README.md with usage examples
 - [ ] PR has been posted to Teams channel for visibility
-- [ ] @AlexanderJablonowski requested as reviewer
+- [ ] @EcoFreshKase (Alexander Jablonowski) requested as reviewer
 
 ## 🚀 Post-Merge Checklist
 <!-- Complete these tasks AFTER the PR is merged -->
