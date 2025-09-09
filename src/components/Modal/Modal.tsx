@@ -57,7 +57,7 @@ const GenericModal: React.FC<ModalProps> = ({
         }}
       >
         <Typography
-          level="title-lg"
+          level="h2"
           sx={{
             display: 'flex',
             justifyContent: 'space-between',
@@ -68,12 +68,18 @@ const GenericModal: React.FC<ModalProps> = ({
         >
           {header}
           <ModalClose 
-            sx={{ 
-              position: 'relative', 
-              top: 0, 
+            size='lg'
+            color='primary'
+            sx={{
+              position: 'relative',
+              top: 0,
               right: 0,
               color: 'primary.500',
-            }} 
+              '& svg': {
+                fontSize: '2rem',
+                fontWeight: 700,
+              },
+            }}
           />
         </Typography>
         <Divider inset="none" sx={{ marginBottom: 1 }} />
