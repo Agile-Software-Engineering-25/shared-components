@@ -2,11 +2,13 @@
 export { default as Button } from './components/Button/Button';
 export { default as Card } from './components/Card/Card';
 export { default as Input } from './components/Input/Input';
+export { default as Modal } from './components/Modal/Modal';
 
 // Export types
 export type { ButtonProps } from './components/Button/Button';
 export type { CardProps } from './components/Card/Card';
 export type { InputProps } from './components/Input/Input';
+export type { ModalProps } from './components/Modal/Modal';
 
 // Export theme utilities
 export { createCustomJoyTheme, createCustomMuiTheme } from './theme/theme';
