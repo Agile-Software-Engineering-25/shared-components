@@ -4,8 +4,8 @@ import {
   FormControl,
   FormLabel,
   FormHelperText,
+  type InputProps as JoyInputProps,
 } from "@mui/joy";
-import type { InputProps as JoyInputProps } from "@mui/joy";
 
 export interface InputProps extends Omit<JoyInputProps, "variant"> {
   variant?: "soft" | "outlined" | "solid" | "plain";

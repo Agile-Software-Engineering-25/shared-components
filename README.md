@@ -200,7 +200,3 @@ For contributing see the documentation: [Contriution Guide Docusaurus](https://a
 ## Support
 
 If you encounter any problems reach out to Alexander Jablonowski or Team 15.
-
-## Todo
-
-- add eslint config
