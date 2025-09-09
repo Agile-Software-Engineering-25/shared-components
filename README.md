@@ -35,7 +35,7 @@ function App() {
 Many components will be exported by the library. Simply import and use them like any other component.
 
 ```tsx
-import { Button, Card, Input } from "@agile-software/shared-components";
+import { Button, Card, Input, Modal } from "@agile-software/shared-components";
 
 function MyComponent() {
   return (
@@ -81,6 +81,46 @@ import { Button } from '@agile-software/shared-components';
 - `loading`: boolean
 - `fullWidth`: boolean
 - All standard button props
+
+### Modal
+
+A customizable modal dialog component with backdrop blur and drop shadow effects.
+
+```tsx
+import { Modal } from '@agile-software/shared-components';
+import { useState } from 'react';
+
+function MyComponent() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open Modal</Button>
+      <Modal
+        header="Modal Title"
+        open={open}
+        setOpen={setOpen}
+        disableEscape={false}
+      >
+        <p>Modal content goes here</p>
+        <Button onClick={() => setOpen(false)}>Close</Button>
+      </Modal>
+    </>
+  );
+}
+```
+
+**Props:**
+
+- `header`: string - The title displayed at the top of the modal
+- `open`: boolean - Controls whether the modal is visible
+- `setOpen`: (open: boolean) => void - Function to control modal open/close state  
+- `disableEscape`: boolean (optional) - Whether to disable closing with escape key
+- `modalSX`: SxProps (optional) - Additional styles for the modal backdrop
+- `modalDialogSX`: SxProps (optional) - Additional styles for the modal dialog
+- `children`: ReactNode - The content to be rendered inside the modal
+
+
 
 ### Card
 
@@ -150,7 +190,7 @@ import { Input } from "@agile-software/shared-components";
 
 ## Contributing
 
-For contributing see the documentation: [here will be a link to docusaurus](someLink)
+For contributing see the documentation: [Contriution Guide Docusaurus](https://agile-software-engineering-25.github.io/documentation/docs/frontend/shared-components/developing)
 
 1. Clone the repository
 2. Create a feature branch
