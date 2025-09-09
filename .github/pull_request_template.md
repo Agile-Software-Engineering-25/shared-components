@@ -19,7 +19,7 @@
 
 ## 🔄 Implementation Differences (Optional)
 
-> If your implementation differs from the original design preview, please explain why and what changes were made
+<!-- If your implementation differs from the original design preview, please explain why and what changes were made -->
 
 ## ✅ Pre-Merge Checklist
 
@@ -29,10 +29,6 @@
 - [ ] TypeScript interfaces/types are defined and exported
 - [ ] Component follows existing code conventions and patterns
 - [ ] Component includes proper JSDoc documentation
-
-### Testing & Quality
-- [ ] Component builds without errors (`npm run build`)
-- [ ] Linting passes (`npm run lint`)
 
 ### Documentation & Communication
 - [ ] Component is documented in README.md with usage examples
