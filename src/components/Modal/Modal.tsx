@@ -1,5 +1,5 @@
 import React, { type ReactNode } from 'react';
-import { Divider, Modal, ModalClose, ModalDialog, Typography } from '@mui/joy';
+import { Box, Divider, Modal, ModalClose, ModalDialog, Typography } from '@mui/joy';
 import type { SxProps } from '@mui/joy/styles/types';
 
 export interface ModalProps {
@@ -82,7 +82,9 @@ const GenericModal: React.FC<ModalProps> = ({
           />
         </Typography>
         <Divider inset="none" sx={{ marginBottom: 1 }} />
-        {children}
+        <Box sx={{ p: 2 }}>
+          {children}
+        </Box>
       </ModalDialog>
     </Modal>
   );
