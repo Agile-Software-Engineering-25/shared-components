@@ -51,7 +51,6 @@ function App() {
 }
 ```
 
-
 ## Available Components
 
 ### Modal
