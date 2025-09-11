@@ -56,7 +56,7 @@ const GenericModal: React.FC<ModalProps> = ({
         }}
       >
         <Typography
-          level="h3"
+          level="h4"
           sx={{
             display: 'flex',
             justifyContent: 'space-between',
@@ -75,8 +75,7 @@ const GenericModal: React.FC<ModalProps> = ({
               right: 0,
               color: 'primary.500',
               '& svg': {
-                fontSize: '2rem',
-                fontWeight: 700,
+                fontSize: '1.75rem',
               },
             }}
           />
