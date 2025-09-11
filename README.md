@@ -9,23 +9,48 @@ See the [frontend-template](https://github.com/Agile-Software-Engineering-25/fro
 
 ## Features
 
-### Custom Joy Theme
+### Custom Themes  
 
-The library exposes a custom theme for `@mui/joy`. You can further customize the theme by passing an object to the function. Usage example:
+As of **v2.0.0**, the old `createCustomTheme` function was **split** into two separate functions:  
+
+- `createCustomJoyTheme()` → for [MUI Joy](https://mui.com/joy-ui/getting-started/overview/)  
+- `createCustomMuiTheme()` → for [MUI Material](https://mui.com/material-ui/getting-started/overview/)  
+
+⚠️ **Important:** Unlike the old `createCustomTheme`, the new theme creators **no longer accept configuration overrides**. They return a fixed theme with our design tokens (colors, typography, fonts).  
+
+For migration instructions, see the full [Migration Guide](https://agile-software-engineering-25.github.io/documentation/docs/frontend/shared-components/migration-guide).
+
+Usage example:  
 
 ```tsx
 import React from "react";
-import { CssVarsProvider } from "@mui/joy/styles";
-import { createCustomTheme } from "@agile-software/shared-components";
+import {
+  createCustomJoyTheme,
+  createCustomMuiTheme,
+} from "@agile-software/shared-components";
+import { CssVarsProvider as JoyCssVarsProvider } from "@mui/joy/styles";
+import { ThemeProvider } from "@mui/material/styles";
+import { MATERIAL_THEME_ID } from "@mui/material/styles";
 
-const theme = createCustomTheme();
+const joyTheme = createCustomJoyTheme();
+const muiTheme = createCustomMuiTheme();
 
 function App() {
   return (
-    <CssVarsProvider theme={theme}>{/* Your app content */}</CssVarsProvider>
+    <ThemeProvider theme={{ [MATERIAL_THEME_ID]: muiTheme }}>
+      <JoyCssVarsProvider
+        theme={joyTheme}
+        defaultMode="light"
+        modeStorageKey="joy-mode"
+        colorSchemeStorageKey="joy-color-scheme"
+      >
+        {/* Your app content */}
+      </JoyCssVarsProvider>
+    </ThemeProvider>
   );
 }
 ```
+
 
 ## Available Components
 
