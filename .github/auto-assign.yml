@@ -1,0 +1,9 @@
+addReviewers: true
+
+reviewers:
+  - EcoFreshKase
+  - py-bay
+
+numberOfReviewers: 0
+
+addAssignees: author
