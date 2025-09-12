@@ -117,7 +117,7 @@ export function createCustomJoyTheme(): CustomJoyTheme {
               theme.palette.mode === "dark"
             ) {
               return {
-                color: "#002E6D",
+                color: theme.colorSchemes.light.palette.primary[500],
               };
             }
             return {};
