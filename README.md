@@ -53,6 +53,56 @@ function App() {
 
 ## Available Components
 
+### Table
+
+A comprehensive, feature-rich data table component with responsive design, advanced filtering, sorting, pagination, and customization options.
+
+```tsx
+import { Table, createTableBuilder } from '@agile-software/shared-components';
+import { useState } from 'react';
+
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  role: string;
+}
+
+function MyComponent() {
+  const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set());
+  
+  const users: User[] = [
+    { id: 1, name: 'John Doe', email: 'john@example.com', role: 'Admin' },
+    { id: 2, name: 'Jane Smith', email: 'jane@example.com', role: 'User' },
+  ];
+
+  const config = createTableBuilder<User>()
+    .addColumn('name', 'Name', { sortable: true })
+    .addColumn('email', 'Email', { sortable: true })
+    .addColumn('role', 'Role')
+    .enableSelection('multiple', { selectedIds, onSelectionChange: setSelectedIds })
+    .enableSorting()
+    .enablePagination()
+    .build();
+
+  return <Table data={users} config={config} />;
+}
+```
+
+**Key Features:**
+- 🎨 Responsive Design (desktop/mobile layouts)
+- 🔄 Multi-column sorting with visual indicators
+- 🔍 Advanced filtering system (text, select, date, number)
+- 📄 Built-in pagination with customizable page sizes
+- ✅ Single or multiple row selection
+- 🎭 Row-level actions with dropdown menus
+- 🎯 Full accessibility and keyboard navigation
+- 🎨 Customizable theming
+- 📱 Mobile-optimized card layout
+- 🏗️ Easy configuration using builder pattern
+
+For detailed documentation, see the [Table README](src/components/Table/README.md).
+
 ### Modal
 
 A customizable modal dialog component with backdrop blur and drop shadow effects.
