@@ -13,4 +13,4 @@ assignees: EcoFreshKase
   - [ ] version number follows semantic versioning
   - [ ] new release contains a change log
 - [ ] Migration guide was created and published in the documentation (only for new major versions)
-- [ ] shared-components-announcemnt channels were notified
+- [ ] shared-components-announcement channels were notified
