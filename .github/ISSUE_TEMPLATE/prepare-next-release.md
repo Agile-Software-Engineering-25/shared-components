@@ -8,7 +8,7 @@ assignees: EcoFreshKase
 ---
 
 - [ ] All relevant PRs are closed
-- [ ] All new componets are documented in the README
+- [ ] All new components are documented in the README
 - [ ] New release of main with the next version number was created
   - [ ] version number follows semantic versioning
   - [ ] new release contains a change log 
