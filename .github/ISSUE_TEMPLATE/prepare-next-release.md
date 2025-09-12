@@ -11,6 +11,6 @@ assignees: EcoFreshKase
 - [ ] All new components are documented in the README
 - [ ] New release of main with the next version number was created
   - [ ] version number follows semantic versioning
-  - [ ] new release contains a change log 
+  - [ ] new release contains a change log
 - [ ] Migration guide was created and published in the documentation (only for new major versions)
 - [ ] shared-components-announcemnt channels were notified
