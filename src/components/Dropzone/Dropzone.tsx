@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { FileUploader } from 'react-drag-drop-files';
 import { Box, IconButton } from '@mui/joy';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
@@ -53,12 +53,12 @@ const FilePreview = ({
   );
 };
 
-function Dropzone({
+const Dropzone: React.FC<DropzoneProps> = ({
   types,
   multiple,
   showStatus = true,
   onFileChange,
-}: DropzoneProps) {
+}: DropzoneProps): JSX.Element => {
   const [file, setFile] = useState<File | null>(null);
 
   const handleChange = (files: File | File[]) => {
