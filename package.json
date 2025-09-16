@@ -1,6 +1,6 @@
 {
   "name": "@agile-software/shared-components",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Shared component library for frontend projects",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
