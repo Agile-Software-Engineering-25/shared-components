@@ -1,7 +1,6 @@
 # Shared Components
 
-A TypeScript-based React component library built with Material-UI Joy, designed to be used as a submodule in frontend projects.
-
+A TypeScript-based React component library built with Material-UI Joy.
 
 ## Installation
 
@@ -9,18 +8,18 @@ See the [frontend-template](https://github.com/Agile-Software-Engineering-25/fro
 
 ## Features
 
-### Custom Themes  
+### Custom Themes
 
-As of **v2.0.0**, the old `createCustomTheme` function was **split** into two separate functions:  
+As of **v2.0.0**, the old `createCustomTheme` function was **split** into two separate functions:
 
-- `createCustomJoyTheme()` → for [MUI Joy](https://mui.com/joy-ui/getting-started/overview/)  
-- `createCustomMuiTheme()` → for [MUI Material](https://mui.com/material-ui/getting-started/overview/)  
+- `createCustomJoyTheme()` → for [MUI Joy](https://mui.com/joy-ui/getting-started/overview/)
+- `createCustomMuiTheme()` → for [MUI Material](https://mui.com/material-ui/getting-started/overview/)
 
-⚠️ **Important:** Unlike the old `createCustomTheme`, the new theme creators **no longer accept configuration overrides**. They return a fixed theme with our design tokens (colors, typography, fonts).  
+⚠️ **Important:** Unlike the old `createCustomTheme`, the new theme creators **no longer accept configuration overrides**. They return a fixed theme with our design tokens (colors, typography, fonts).
 
 For migration instructions, see the full [Migration Guide](https://agile-software-engineering-25.github.io/documentation/docs/frontend/shared-components/migration-guide).
 
-Usage example:  
+Usage example:
 
 ```tsx
 import React from "react";
@@ -58,8 +57,8 @@ function App() {
 A customizable modal dialog component with backdrop blur and drop shadow effects.
 
 ```tsx
-import { Modal } from '@agile-software/shared-components';
-import { useState } from 'react';
+import { Modal } from "@agile-software/shared-components";
+import { useState } from "react";
 
 function MyComponent() {
   const [open, setOpen] = useState(false);
@@ -85,7 +84,7 @@ function MyComponent() {
 
 - `header`: string - The title displayed at the top of the modal
 - `open`: boolean - Controls whether the modal is visible
-- `setOpen`: (open: boolean) => void - Function to control modal open/close state  
+- `setOpen`: (open: boolean) => void - Function to control modal open/close state
 - `disableEscape`: boolean (optional) - Whether to disable closing with escape key
 - `modalSX`: SxProps (optional) - Additional styles for the modal backdrop
 - `modalDialogSX`: SxProps (optional) - Additional styles for the modal dialog
