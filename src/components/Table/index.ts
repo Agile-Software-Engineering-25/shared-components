@@ -21,3 +21,8 @@ export * from './types';
 
 // Utilities
 export * from './utils';
+
+
+// TODO: remove DEBUG
+export { default as AdvancedExample } from './examples/AdvancedExample';
+export { default as BasicExample } from './examples/BasicExample';
