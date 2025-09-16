@@ -71,7 +71,7 @@
     "url": "git+https://github.com/Agile-Software-Engineering-25/shared-components.git"
   },
   "publishConfig": {
-    "access": "restricted"
+    "access": "public"
   },
   "optionalDependencies": {
     "@rollup/rollup-darwin-arm64": "^4.46.2",
