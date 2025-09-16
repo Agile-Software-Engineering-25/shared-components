@@ -2,7 +2,9 @@ name: "Publish npm Package"
 on:
   release:
     types: [created]
-  workflow_dispatch:
+  push:
+    branches:
+      - npm-package-migration
 
 jobs:
   publish:
