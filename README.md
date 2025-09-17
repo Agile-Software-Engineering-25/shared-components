@@ -55,7 +55,7 @@ function App() {
 > ⚠️ **Note on Buttons:**  
 This library does **not** provide custom shared button components.  
 Use the standard [Joy UI `Button`](https://mui.com/joy-ui/react-button/) or [Joy UI `IconButton`](https://mui.com/joy-ui/react-button/#icon-button) instead.  
-Any styling requirements should be handled through the theme.
+Any styling requirements should be handled through the theme or joy API.
 
 ### Modal
 
