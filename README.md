@@ -4,20 +4,26 @@ A TypeScript-based React component library built with Material-UI Joy.
 
 ## Installation
 
-See the [frontend-template](https://github.com/Agile-Software-Engineering-25/frontend-template) project for how to use it. Other uses are not supported.
+Install the package with npm:
+
+```bash
+npm install @agile-software/shared-components
+```
+
+## Migration
+
+If you are upgrading from an older version of @agile-software/shared-components, please see the full [Migration Guide](https://agile-software-engineering-25.github.io/documentation/docs/frontend/shared-components/migration-guide).## Features
 
 ## Features
 
 ### Custom Themes
 
-As of **v2.0.0**, the old `createCustomTheme` function was **split** into two separate functions:
+The library provides two fixed theme creators based on our design tokens (colors, typography, fonts):
 
 - `createCustomJoyTheme()` → for [MUI Joy](https://mui.com/joy-ui/getting-started/overview/)
 - `createCustomMuiTheme()` → for [MUI Material](https://mui.com/material-ui/getting-started/overview/)
 
-⚠️ **Important:** Unlike the old `createCustomTheme`, the new theme creators **no longer accept configuration overrides**. They return a fixed theme with our design tokens (colors, typography, fonts).
-
-For migration instructions, see the full [Migration Guide](https://agile-software-engineering-25.github.io/documentation/docs/frontend/shared-components/migration-guide).
+⚠️ Important: These functions return fixed themes and do not accept configuration overrides.
 
 Usage example:
 
@@ -49,6 +55,7 @@ function App() {
   );
 }
 ```
+
 
 ## Available Components
 
@@ -124,4 +131,4 @@ For contributing see the documentation: [Contriution Guide Docusaurus](https://a
 
 ## Support
 
-If you encounter any problems reach out to Alexander Jablonowski or Team 15.
+If you encounter any problems reach out to Alexander Jablonowski (@EcoFreshKase) or Simon Dietrich (@py-bay).
