@@ -1,6 +1,7 @@
 import React, { type ReactNode, useState } from 'react';
 import { Box, Typography, Accordion as MuiAccordion, AccordionDetails, AccordionGroup, AccordionSummary } from '@mui/joy';
 import type { SxProps } from '@mui/joy/styles/types';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 export interface AccordionItem {
   id: string;
@@ -73,7 +74,14 @@ const GenericAccordion: React.FC<AccordionProps> = ({
             ...accordionSX,
           }}
         >
-          <AccordionSummary>
+          <AccordionSummary
+            indicator={
+              <KeyboardArrowDownIcon
+                color='primary'
+                fontSize='large'
+              />
+            }
+          >
             <Typography
               level="h3"
               m={2}
