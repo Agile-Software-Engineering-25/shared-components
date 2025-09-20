@@ -76,5 +76,9 @@
   "optionalDependencies": {
     "@rollup/rollup-darwin-arm64": "^4.46.2",
     "@rollup/rollup-linux-x64-gnu": "^4.46.2"
+  },
+  "dependencies": {
+    "@mui/icons-material": "^7.3.2",
+    "react-drag-drop-files": "^3.1.0"
   }
 }
