@@ -1,11 +1,4 @@
-# 🧩 Shared Component Addition
-
-## Component Overview
-**Component Name:** 
-<!-- Provide the name of this component -->
-
-**Brief Description:** 
-<!-- Provide a short description of what this component does and its primary use cases -->
+# 🧩 Shared Component Addition - [ComponentName]<!-- Add the name of the component -->
 
 ## 📸 Design Verification
 <!-- Please add a screenshot or GIF showing the component in action -->
@@ -31,16 +24,3 @@
 
 ### Documentation & Communication
 - [ ] Component is documented in README.md with usage examples
-- [ ] PR has been posted to Teams channel for visibility
-- [ ] @EcoFreshKase (Alexander Jablonowski) requested as reviewer
-
-## 🚀 Post-Merge Checklist
-<!-- Complete these tasks AFTER the PR is merged -->
-
-### Team Notification
-- [ ] Notify team members about the new shared component
-- [ ] Remind team to run `updateSharedComponents` script in their projects
-
-### Cleanup
-- [ ] Delete the feature branch after merge
-- [ ] Author: Switch back to `@agile-software/shared-components` in package.json dependencies (from local path)
