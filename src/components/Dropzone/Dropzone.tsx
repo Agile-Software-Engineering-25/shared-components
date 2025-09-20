@@ -1,14 +1,30 @@
 import React, { useState } from 'react';
 import { FileUploader } from 'react-drag-drop-files';
-import { Box, IconButton } from '@mui/joy';
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import { Box, Button, IconButton, Typography } from '@mui/joy';
+import  CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import DownloadIcon from '@mui/icons-material/Download';
+import SearchIcon from '@mui/icons-material/Search';
 
-type DropzoneProps = {
-  types?: string[]; //default all file types
-  multiple?: boolean; //default false
+export interface DropzoneProps {
+  types?: string[]; // default: alle Typen
+  multiple?: boolean; // default: false
   showStatus?: boolean; // default: true
   onFileChange?: (file: File | null) => void;
-};
+  onUploadClick?: (file: File) => void; 
+}
+
+/**
+ * A customizable modal dialog component with blur background and drop shadow.
+ * 
+ * @param {DropzoneProps} props - The props for the Dropzone component
+ * @param {string[]} [props.types] - Allowed file types for upload (default: all types)
+ * @param {boolean} [props.multiple=false] - Whether to allow multiple file uploads
+ * @param {boolean} [props.showStatus=true] - Whether to show the upload status
+ * @param {function} [props.onFileChange] - Callback function when a file is selected or removed
+ * @param {function} [props.onUploadClick] - Callback function when the upload button is clicked
+ * @returns {JSX.Element} The rendered Dropzone component
+ */
+
 
 const FilePreview = ({
   file,
@@ -78,11 +94,38 @@ const Dropzone: React.FC<DropzoneProps> = ({
         handleChange={handleChange}
         name="file"
         types={types}
-        children={void 0}
         multiple={multiple}
-      />
+      >
+        <Box
+          sx={{
+              cursor: 'pointer',
+              p: 3,
+              border: '3px dashed',
+              borderRadius: 'xl',
+              textAlign: 'center',
+              transition: 'all 120ms ease',
+              borderColor: 'var(--joy-palette-primary-500)',
+              backgroundColor: 'var(--joy-palette-primary-softBg)',
+              '&:hover': {
+                borderColor: 'var(--joy-palette-primary-outlinedBorder)',
+                backgroundColor: 'var(--joy-palette-primary-softBg)'
+              }
+            }}
+        >
+          <Typography level="h4" sx={{ display: 'inline-flex', mb: 1, alignItems: 'center' }} color='primary'>
+            <DownloadIcon sx={{ horizontalAlign: 'middle', mr: 1 }} />
+            Ziehe etwas hierher oder lade deine Datei hoch
+          </Typography>
+          <Button sx={{ mt: 2 }}>
+            <Typography level="body" sx={{ display: 'inline-flex', alignItems: 'center' }} color="secondary">
+              Dateien Durchsuchen
+              <SearchIcon sx={{ horizontalAlign: 'middle', ml: 1 }} />
+            </Typography>
+          </Button>
+        </Box>
+      </FileUploader>
 
-      {showStatus && (
+      {/* {showStatus && (
         <Box sx={{ mt: 3, mb: 1 }}>
           {file ? (
             <FilePreview file={file} onDelete={handleDelete} />
@@ -91,6 +134,15 @@ const Dropzone: React.FC<DropzoneProps> = ({
           )}
         </Box>
       )}
+      <Button
+              sx={{ mt: 2 }}
+              onClick={() => {
+                if (file) FileUploader(file);
+              }}
+              disabled={!file}
+            >
+              upload
+      </Button> */}
     </>
   );
 }
