@@ -98,7 +98,7 @@ const GenericAccordion: React.FC<AccordionProps> = ({
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <Box sx={{ p: 1 }}>
+            <Box sx={{ p: 1, marginLeft: 2 }}>
               {item.children}
             </Box>
           </AccordionDetails>
