@@ -5,8 +5,12 @@ A customizable card component for displaying content with optional image, title,
 ## Features
 
 - Clean, modern design with rounded corners and subtle shadows
-- Optional image display above content
-- Flexible content structure (title + description + custom children)
+- Optional image display above content with button overlay
+- Flexible header structure (icon + title + button)
+- Optional subtitle with proper indentation
+- Optional chips for status/tags below title
+- Divider between header and content (when no image)
+- Flexible content structure (description + custom children)
 - Hover effects when clickable
 - Fully customizable styling
 - TypeScript support
@@ -45,16 +49,83 @@ function MyComponent() {
 }
 ```
 
-### Card with Only Children (No Title/Description)
+### Card with Header (Icon + Title + Button + Subtitle)
 
 ```tsx
 import { Card } from '@ase/shared-components';
-import { Box, Typography, Divider, Chip } from '@mui/joy';
+import { Typography } from '@mui/joy';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
-function ExamCard() {
+function ExamStatusCard() {
   return (
     <Card
-      onClick={() => console.log('Exam card clicked!')}
+      icon={<CheckCircleIcon color="success" />}
+      title="D725"
+      subtitle="Benotet"
+      imageButton={{
+        text: "Bearbeiten",
+        onClick: () => console.log('Edit clicked!'),
+        variant: "outlined"
+      }}
+    >
+      <Typography sx={{ color: 'text.secondary', mb: 1 }}>
+        Erreichte Punkte
+      </Typography>
+      <Typography level="h2" sx={{ mb: 2 }}>
+        95/100
+      </Typography>
+
+      <Typography sx={{ color: 'text.secondary', mb: 1 }}>
+        Note
+      </Typography>
+      <Typography level="h3">
+        1.3
+      </Typography>
+    </Card>
+  );
+}
+```
+
+### Card with Chips Instead of Subtitle
+
+```tsx
+import { Card } from '@ase/shared-components';
+import { Typography } from '@mui/joy';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+
+function TaskCard() {
+  return (
+    <Card
+      icon={<AssignmentIcon color="primary" />}
+      title="Project Alpha"
+      chips={[
+        { label: "High Priority", color: "danger", variant: "soft" },
+        { label: "Due Soon", color: "warning", variant: "soft" },
+        { label: "Team A", color: "primary", variant: "outlined" }
+      ]}
+      imageButton={{
+        text: "View Details",
+        onClick: () => console.log('View details clicked!'),
+      }}
+    >
+      <Typography sx={{ color: 'text.secondary' }}>
+        Status: In Progress • 3 tasks remaining
+      </Typography>
+    </Card>
+  );
+}
+```
+
+### Card with Only Children (Custom Layout)
+
+```tsx
+import { Card } from '@ase/shared-components';
+import { Box, Typography, Chip } from '@mui/joy';
+
+function CustomCard() {
+  return (
+    <Card
+      onClick={() => console.log('Card clicked!')}
       cardSX={{
         width: 270,
         cursor: 'pointer',
@@ -68,22 +139,10 @@ function ExamCard() {
       <Typography level="h4" fontWeight="bold" lineHeight={1.2}>
         Advanced Programming Exam
       </Typography>
-      <Divider inset="none" />
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 1 }}>
         <Box>
           <Typography sx={{ opacity: '50%' }}>Module</Typography>
           <Typography fontWeight="bold">CSE101</Typography>
-        </Box>
-        <Box>
-          <Typography sx={{ opacity: '50%' }}>Date</Typography>
-          <Typography>2024-03-15</Typography>
-        </Box>
-      </Box>
-
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 1 }}>
-        <Box>
-          <Typography sx={{ opacity: '50%' }}>Duration</Typography>
-          <Typography>120 min</Typography>
         </Box>
         <Box>
           <Typography sx={{ opacity: '50%' }}>Status</Typography>
@@ -168,15 +227,39 @@ function CardList() {
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `title` | `string` | `undefined` | Optional main title of the card |
+| `subtitle` | `string` | `undefined` | Optional subtitle below the title |
+| `chips` | `Array<ChipConfig>` | `undefined` | Optional array of chips to display below title |
 | `description` | `string` | `undefined` | Optional description text |
 | `image` | `string` | `undefined` | Optional image URL to display above content |
 | `imageAlt` | `string` | `title` | Alt text for the image |
+| `icon` | `ReactNode` | `undefined` | Optional icon to display before the title |
+| `imageButton` | `ButtonConfig` | `undefined` | Optional button beside image or in header |
 | `children` | `ReactNode` | `undefined` | Optional additional content to render in the card body |
 | `cardSX` | `SxProps` | `undefined` | Additional styles for the card container |
 | `contentSX` | `SxProps` | `undefined` | Additional styles for the card content area |
 | `titleSX` | `SxProps` | `undefined` | Additional styles for the title |
+| `subtitleSX` | `SxProps` | `undefined` | Additional styles for the subtitle |
+| `chipsSX` | `SxProps` | `undefined` | Additional styles for the chips container |
 | `descriptionSX` | `SxProps` | `undefined` | Additional styles for the description |
 | `onClick` | `() => void` | `undefined` | Optional click handler for the card |
+
+### ChipConfig Interface
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `label` | `string` | **required** | Text to display in the chip |
+| `color` | `'primary' \| 'neutral' \| 'danger' \| 'success' \| 'warning'` | `'neutral'` | Color theme of the chip |
+| `variant` | `'solid' \| 'soft' \| 'outlined' \| 'plain'` | `'soft'` | Visual variant of the chip |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'sm'` | Size of the chip |
+
+### ButtonConfig Interface
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `text` | `string` | **required** | Text to display in the button |
+| `onClick` | `() => void` | **required** | Button click handler |
+| `variant` | `'solid' \| 'soft' \| 'outlined' \| 'plain'` | `'outlined'` | Button variant |
+| `color` | `'primary' \| 'neutral' \| 'danger' \| 'success' \| 'warning'` | `'primary'` | Button color theme |
 
 ## Styling
 
