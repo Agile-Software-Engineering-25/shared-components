@@ -6,6 +6,7 @@ import type { SxProps } from '@mui/joy/styles/types';
 export type SearchBarSize = 'sm' | 'md' | 'lg';
 export type SearchBarVariant = 'outlined' | 'soft' | 'plain';
 export type SearchBarColor = 'primary' | 'neutral' | 'danger' | 'success' | 'warning';
+export type SearchBarMode = 'default' | 'disabled' | 'readOnly' | 'required';
 
 export interface SearchBarProps {
   value?: string;
@@ -13,9 +14,7 @@ export interface SearchBarProps {
   onSearch?: (value: string) => void;
   onKeyDown?: (event: KeyboardEvent<HTMLInputElement>) => void;
   placeholder?: string;
-  disabled?: boolean;
-  readOnly?: boolean;
-  required?: boolean;
+  mode?: SearchBarMode;
   error?: boolean;
   size?: SearchBarSize;
   variant?: SearchBarVariant;
@@ -23,7 +22,6 @@ export interface SearchBarProps {
   fullWidth?: boolean;
   autoFocus?: boolean;
   clearOnSearch?: boolean;
-  searchOnEnter?: boolean;
   debounceMs?: number;
   maxLength?: number;
   startDecorator?: ReactNode;
@@ -51,7 +49,6 @@ export interface SearchBarProps {
  * @param {boolean} [props.fullWidth=false] - Whether to take full width
  * @param {boolean} [props.autoFocus=false] - Whether to auto focus on mount
  * @param {boolean} [props.clearOnSearch=false] - Whether to clear input after search
- * @param {boolean} [props.searchOnEnter=true] - Whether to trigger search on Enter
  * @param {number} [props.debounceMs] - Debounce delay for onChange in milliseconds
  * @param {number} [props.maxLength] - Maximum character length
  * @param {ReactNode} [props.startDecorator] - Custom start decorator (overrides search icon)
@@ -66,9 +63,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
   onSearch,
   onKeyDown,
   placeholder = 'Placeholder...',
-  disabled = false,
-  readOnly = false,
-  required = false,
+  mode = 'default',
   error = false,
   size = 'md',
   variant = 'outlined',
@@ -76,7 +71,6 @@ const SearchBar: React.FC<SearchBarProps> = ({
   fullWidth = false,
   autoFocus = false,
   clearOnSearch = false,
-  searchOnEnter = true,
   debounceMs,
   maxLength,
   startDecorator,
@@ -128,7 +122,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
       onKeyDown(event);
     }
 
-    if (searchOnEnter && event.key === 'Enter' && onSearch) {
+    if (event.key === 'Enter' && onSearch) {
       event.preventDefault();
       const searchValue = value !== undefined ? value : internalValue;
       onSearch(searchValue);
@@ -156,9 +150,9 @@ const SearchBar: React.FC<SearchBarProps> = ({
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
         placeholder={placeholder}
-        disabled={disabled}
-        readOnly={readOnly}
-        required={required}
+        disabled={mode === 'disabled'}
+        readOnly={mode === 'readOnly'}
+        required={mode === 'required'}
         error={error}
         size={size}
         variant={variant}
