@@ -166,6 +166,8 @@ function MyComponent() {
 - `header`: string - The title displayed in the accordion header
 - `children`: ReactNode - The content to be rendered when the section is expanded
 
+📖 **[Full Card Documentation →](./src/components/Card/README.md)**
+
 ## Development
 
 ### Scripts
