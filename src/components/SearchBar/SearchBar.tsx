@@ -65,7 +65,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
   onChange,
   onSearch,
   onKeyDown,
-  placeholder = 'Search...',
+  placeholder = 'Placeholder...',
   disabled = false,
   readOnly = false,
   required = false,
@@ -176,12 +176,10 @@ const SearchBar: React.FC<SearchBarProps> = ({
           borderRadius: '8px',
           transition: 'all 0.2s ease-in-out',
           '&:hover': {
-            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
-            transform: 'translateY(-1px)',
+            backgroundColor: 'background.level1',
           },
           '&:focus-within': {
             boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
-            transform: 'translateY(-1px)',
           },
           ...inputSX,
         }}
