@@ -12,7 +12,7 @@ npm install @agile-software/shared-components
 
 ## Migration
 
-If you are upgrading from an older version of @agile-software/shared-components, please see the full [Migration Guide](https://agile-software-engineering-25.github.io/documentation/docs/frontend/shared-components/migration-guide).## Features
+If you are upgrading from an older version of @agile-software/shared-components, please see the full [Migration Guide](https://agile-software-engineering-25.github.io/documentation/docs/frontend/shared-components/migration-guide).
 
 ## Features
 
@@ -66,6 +66,8 @@ Any styling requirements should be handled through the theme or joy API.
 - **[Modal](./src/components/Modal/README.md)** - Customizable modal dialog component with backdrop blur and drop shadow effects
 - **[Accordion](./src/components/Accordion/README.md)** - Collapsible accordion component with multiple sections support
 - **[SearchBar](./src/components/SearchBar/README.md)** - Highly configurable search input with debouncing and advanced features
+
+📖 **[Full Card Documentation →](./src/components/Card/README.md)**
 
 ## Development
 
