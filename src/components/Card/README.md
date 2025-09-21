@@ -5,7 +5,7 @@ A customizable card component for displaying content with optional image, title,
 ## Features
 
 - Clean, modern design with rounded corners and subtle shadows
-- Optional image background with automatic overlay
+- Optional image display above content
 - Flexible content structure (title + description + custom children)
 - Hover effects when clickable
 - Fully customizable styling
@@ -169,7 +169,7 @@ function CardList() {
 |------|------|---------|-------------|
 | `title` | `string` | `undefined` | Optional main title of the card |
 | `description` | `string` | `undefined` | Optional description text |
-| `image` | `string` | `undefined` | Optional image URL to display as background |
+| `image` | `string` | `undefined` | Optional image URL to display above content |
 | `imageAlt` | `string` | `title` | Alt text for the image |
 | `children` | `ReactNode` | `undefined` | Optional additional content to render in the card body |
 | `cardSX` | `SxProps` | `undefined` | Additional styles for the card container |
@@ -185,7 +185,7 @@ The Card component uses Joy UI's styling system and includes default styles for:
 - Rounded corners (10px border radius)
 - Subtle shadow with hover enhancement
 - Primary color scheme for titles
-- Automatic text color adjustment for image overlays
+- Clean image and content separation
 - Smooth transitions for interactive states
 
 ### Custom Styling Examples
@@ -220,6 +220,7 @@ The Card component uses Joy UI's styling system and includes default styles for:
 
 ## Notes
 
-- When an image is provided, the card automatically applies a gradient overlay to ensure text readability
+- When an image is provided, it displays above the content area (200px height by default)
 - The card becomes interactive (with hover effects) only when an `onClick` handler is provided
 - All style props accept Joy UI's `SxProps` for consistent theming
+- Image height can be customized using the `cardSX` prop to target the image container

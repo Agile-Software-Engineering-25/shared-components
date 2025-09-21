@@ -1,5 +1,5 @@
 import React, { type ReactNode } from 'react';
-import { Box, Card as MuiCard, CardContent, CardCover, Typography } from '@mui/joy';
+import { Box, Card as MuiCard, CardContent, Typography } from '@mui/joy';
 import type { SxProps } from '@mui/joy/styles/types';
 
 export interface CardProps {
@@ -47,6 +47,7 @@ const GenericCard: React.FC<CardProps> = ({
     <MuiCard
       sx={{
         borderRadius: '10px',
+        backgroundColor: '#f3f8ff',
         boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.1)',
         cursor: onClick ? 'pointer' : 'default',
         transition: 'all 0.2s ease-in-out',
@@ -54,12 +55,19 @@ const GenericCard: React.FC<CardProps> = ({
           boxShadow: '0px 4px 16px rgba(0, 0, 0, 0.15)',
           transform: 'translateY(-2px)',
         } : {},
+        overflow: 'hidden',
         ...cardSX,
       }}
       onClick={onClick}
     >
       {image && (
-        <CardCover>
+        <Box
+          sx={{
+            width: '100%',
+            height: 200,
+            overflow: 'hidden',
+          }}
+        >
           <img
             src={image}
             alt={imageAlt || title || 'Card image'}
@@ -67,16 +75,13 @@ const GenericCard: React.FC<CardProps> = ({
               objectFit: 'cover',
               width: '100%',
               height: '100%',
+              display: 'block',
             }}
           />
-        </CardCover>
+        </Box>
       )}
       <CardContent
         sx={{
-          ...(image && {
-            background: 'linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.0))',
-            color: 'white',
-          }),
           ...contentSX,
         }}
       >
@@ -85,7 +90,7 @@ const GenericCard: React.FC<CardProps> = ({
             level="h4"
             sx={{
               fontWeight: 'md',
-              color: image ? 'white' : 'primary.500',
+              color: 'primary.500',
               userSelect: 'none',
               ...titleSX,
             }}
@@ -99,7 +104,7 @@ const GenericCard: React.FC<CardProps> = ({
             level="body-md"
             sx={{
               mt: 1,
-              color: image ? 'rgba(255, 255, 255, 0.9)' : 'text.secondary',
+              color: 'text.secondary',
               ...descriptionSX,
             }}
           >
