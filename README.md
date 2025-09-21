@@ -58,113 +58,14 @@ function App() {
 
 ## Available Components
 
-> ⚠️ **Note on Buttons:**  
-This library does **not** provide custom shared button components.  
-Use the standard [Joy UI `Button`](https://mui.com/joy-ui/react-button/) or [Joy UI `IconButton`](https://mui.com/joy-ui/react-button/#icon-button) instead.  
+> ⚠️ **Note on Buttons:**
+This library does **not** provide custom shared button components.
+Use the standard [Joy UI `Button`](https://mui.com/joy-ui/react-button/) or [Joy UI `IconButton`](https://mui.com/joy-ui/react-button/#icon-button) instead.
 Any styling requirements should be handled through the theme or joy API.
 
-### Modal
-
-A customizable modal dialog component with backdrop blur and drop shadow effects.
-
-```tsx
-import { Modal } from "@agile-software/shared-components";
-import { useState } from "react";
-
-function MyComponent() {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <>
-      <Button onClick={() => setOpen(true)}>Open Modal</Button>
-      <Modal
-        header="Modal Title"
-        open={open}
-        setOpen={setOpen}
-        disableEscape={false}
-      >
-        <p>Modal content goes here</p>
-        <Button onClick={() => setOpen(false)}>Close</Button>
-      </Modal>
-    </>
-  );
-}
-```
-
-**Props:**
-
-- `header`: string - The title displayed at the top of the modal
-- `open`: boolean - Controls whether the modal is visible
-- `setOpen`: (open: boolean) => void - Function to control modal open/close state
-- `disableEscape`: boolean (optional) - Whether to disable closing with escape key
-- `modalSX`: SxProps (optional) - Additional styles for the modal backdrop
-- `modalDialogSX`: SxProps (optional) - Additional styles for the modal dialog
-- `children`: ReactNode - The content to be rendered inside the modal
-
-### Accordion
-
-A customizable accordion component with collapsible sections, built on top of Material-UI Joy.
-
-```tsx
-import { Accordion } from "@agile-software/shared-components";
-import { useState } from "react";
-
-function MyComponent() {
-  const accordionItems = [
-    {
-      id: "section1",
-      header: "General Information",
-      children: (
-        <div>
-          <p>This is the content for the first section.</p>
-          <p>It can contain any React elements.</p>
-        </div>
-      )
-    },
-    {
-      id: "section2",
-      header: "Technical Details",
-      children: (
-        <div>
-          <h4>Configuration Options</h4>
-          <ul>
-            <li>Option 1: Description</li>
-            <li>Option 2: Description</li>
-          </ul>
-        </div>
-      )
-    },
-    {
-      id: "section3",
-      header: "Advanced Settings",
-      children: <p>Advanced configuration content goes here.</p>
-    }
-  ];
-
-  return (
-    <Accordion
-      items={accordionItems}
-      multiple={true}
-      defaultExpanded={["section1"]}
-    />
-  );
-}
-```
-
-**Props:**
-
-- `items`: AccordionItem[] - Array of accordion items with id, header, and children
-- `multiple`: boolean (optional, default: false) - Whether multiple sections can be open simultaneously
-- `defaultExpanded`: string | string[] (optional) - Default expanded section(s) by id
-- `accordionSX`: SxProps (optional) - Additional styles for individual accordion items
-- `accordionGroupSX`: SxProps (optional) - Additional styles for the accordion group
-- `headerSX`: SxProps (optional) - Additional styles for accordion headers
-
-**AccordionItem Interface:**
-
-- `id`: string - Unique identifier for the accordion item
-- `header`: string - The title displayed in the accordion header
-- `children`: ReactNode - The content to be rendered when the section is expanded
+- **[Modal](./src/components/Modal/README.md)** - Customizable modal dialog component with backdrop blur and drop shadow effects
+- **[Accordion](./src/components/Accordion/README.md)** - Collapsible accordion component with multiple sections support
+- **[SearchBar](./src/components/SearchBar/README.md)** - Highly configurable search input with debouncing and advanced features
 
 ## Development
 

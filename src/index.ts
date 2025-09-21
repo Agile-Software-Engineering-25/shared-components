@@ -1,8 +1,15 @@
 // Export components
 export { default as Modal } from './components/Modal/Modal';
+export { default as SearchBar } from './components/SearchBar/SearchBar';
 export { default as Accordion } from './components/Accordion/Accordion';
 
 // Export types
+export type {
+  SearchBarProps,
+  SearchBarSize,
+  SearchBarVariant,
+  SearchBarColor
+} from './components/SearchBar/SearchBar';
 export type { ModalProps } from './components/Modal/Modal';
 export type { AccordionProps, AccordionItem } from './components/Accordion/Accordion';
 
