@@ -16,14 +16,6 @@ A comprehensive, feature-rich table component built for React applications using
 - ⚡ **Performance** - Optimized for large datasets with virtual scrolling support
 - 🏗️ **Builder Pattern** - Easy configuration using a fluent builder API
 
-## Installation
-
-The Table component is part of the `@agile-software/shared-components` package:
-
-```bash
-npm install @agile-software/shared-components
-```
-
 ## Basic Usage
 
 ```tsx
@@ -383,20 +375,3 @@ For large datasets, consider these optimization techniques:
 - Implement lazy loading with the `loading` prop
 - Use `React.memo` for complex cell renderers
 - Consider virtual scrolling for extremely large datasets
-
-## Browser Support
-
-The Table component supports all modern browsers:
-
-- Chrome 91+
-- Firefox 90+
-- Safari 14+
-- Edge 91+
-
-## Contributing
-
-See the main package README for contribution guidelines.
-
-## License
-
-MIT License - see the main package for details.
