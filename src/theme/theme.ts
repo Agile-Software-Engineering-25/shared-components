@@ -124,6 +124,13 @@ export function createCustomJoyTheme(): CustomJoyTheme {
           },
         },
       },
+      JoySheet: {
+        styleOverrides: {
+          root: () => ({
+            borderRadius: "var(--joy-radius-md)",
+          }),
+        },
+      },
     },
   });
 }
