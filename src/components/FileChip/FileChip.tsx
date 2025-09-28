@@ -1,8 +1,7 @@
 import React from 'react';
-import { Box, IconButton, Typography } from '@mui/joy';
+import { Box, IconButton, Typography, useColorScheme } from '@mui/joy';
 import { Close as CloseIcon } from '@mui/icons-material';
 import type { SxProps } from '@mui/joy/styles/types';
-import { useTheme } from '@emotion/react';
 import type { Theme } from '@mui/joy/styles';
 
 const FILE_EXTENSION_COLORS: Record<string, keyof Theme['vars']['palette']> = {
@@ -105,7 +104,7 @@ const FileChip: React.FC<FileChipProps> = ({
   const nameWithoutExtension = getFileNameWithoutExtension(filename);
   const displayName = showFileExtension && extension ? nameWithoutExtension : filename;
   const extensionColor = getExtensionColor(extension);
-  const theme = useTheme();
+  const { mode } = useColorScheme();
 
   const chipContent = (
     <Box
@@ -113,8 +112,6 @@ const FileChip: React.FC<FileChipProps> = ({
       sx={{
         display: 'flex',
         alignItems: 'stretch',
-        border: '2px solid',
-        borderColor: 'primary.500',
         borderRadius: '10px',
         overflow: 'hidden',
         cursor: onClick ? 'pointer' : 'default',
@@ -128,63 +125,82 @@ const FileChip: React.FC<FileChipProps> = ({
         ...containerSX,
       }}
     >
-      {onDelete && (
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'stretch',
+          flex: 1,
+          border: '2px solid',
+          borderColor: 'primary.500',
+          borderTopLeftRadius: '8px',
+          borderBottomLeftRadius: '8px',
+          ...(!(showFileExtension && extension) && {
+            borderTopRightRadius: '8px',
+            borderBottomRightRadius: '8px',
+          }),
+          ...(showFileExtension && extension && {
+            borderRight: 'none',
+          }),
+        }}
+      >
+        {onDelete && (
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              pl: 1,
+            }}
+          >
+            <IconButton
+              size="lg"
+              variant="plain"
+              color="primary"
+              onClick={(e) => {
+                e.stopPropagation();
+                onDelete();
+              }}
+              sx={{
+                minWidth: '28px',
+                minHeight: '28px',
+                '&:hover': {
+                  backgroundColor: 'danger.50',
+                  color: 'danger.500',
+                },
+                '& svg': {
+                  fontSize: '1.5rem',
+                },
+              }}
+            >
+              <CloseIcon />
+            </IconButton>
+          </Box>
+        )}
+
         <Box
           sx={{
             display: 'flex',
             alignItems: 'center',
-            pl: 1,
+            flex: 1,
+            px: onDelete ? 1 : 2,
+            py: 1,
           }}
         >
-          <IconButton
-            size="lg"
-            variant="plain"
-            color="primary"
-            onClick={(e) => {
-              e.stopPropagation();
-              onDelete();
-            }}
+          <Typography
+            level="body-md"
             sx={{
-              minWidth: '28px',
-              minHeight: '28px',
-              '&:hover': {
-                backgroundColor: 'danger.50',
-                color: 'danger.500',
-              },
-              '& svg': {
-                fontSize: '1.5rem',
-              },
+              fontWeight: 500,
+              color: 'neutral',
+              userSelect: 'none',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              maxWidth: '300px',
             }}
+            title={filename}
           >
-            <CloseIcon />
-          </IconButton>
+            {displayName}
+          </Typography>
         </Box>
-      )}
-
-      <Box
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          flex: 1,
-          px: onDelete ? 1 : 2,
-          py: 1,
-        }}
-      >
-        <Typography
-          level="body-md"
-          sx={{
-            fontWeight: 500,
-            color: 'neutral',
-            userSelect: 'none',
-            whiteSpace: 'nowrap',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-            maxWidth: '300px',
-          }}
-          title={filename}
-        >
-          {displayName}
-        </Typography>
       </Box>
 
     {showFileExtension && extension && (
@@ -199,6 +215,11 @@ const FileChip: React.FC<FileChipProps> = ({
           textTransform: 'uppercase',
           minWidth: '50px',
           px: 1.5,
+          border: '2px solid',
+          borderColor: mode === 'light' ? `${extensionColor}.500` : 'primary.500',
+          borderTopRightRadius: '8px',
+          borderBottomRightRadius: '8px',
+          borderLeft: 'none',
           ...extensionSX,
         }}
       >
