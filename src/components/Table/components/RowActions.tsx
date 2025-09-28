@@ -1,28 +1,35 @@
-import React, { useState, useRef } from 'react';
-import { Box, IconButton, Menu, MenuItem, Dropdown, MenuButton } from '@mui/joy';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import type { DataItem, Action } from '../types';
-import { useTableTheme } from '../hooks';
+import React, { useState, useRef } from "react";
+import {
+  Box,
+  IconButton,
+  Menu,
+  MenuItem,
+  Dropdown,
+  MenuButton,
+} from "@mui/joy";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import type { DataItem, Action } from "../types";
+import { useTableTheme } from "../hooks";
 
 interface RowActionsProps<T extends DataItem> {
   row: T;
   index: number;
   actions: Action<T>[];
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
 }
 
 const RowActions = <T extends DataItem>({
   row,
   index,
   actions,
-  size = 'md',
+  size = "md",
 }: RowActionsProps<T>) => {
   const { theme } = useTableTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  const visibleActions = actions.filter(action => 
-    !action.hidden || !action.hidden(row)
+  const visibleActions = actions.filter(
+    (action) => !action.hidden || !action.hidden(row)
   );
 
   if (visibleActions.length === 0) {
@@ -33,7 +40,7 @@ const RowActions = <T extends DataItem>({
     if (action.disabled && action.disabled(row)) {
       return;
     }
-    
+
     action.onClick(row, index);
     setMenuOpen(false);
   };
@@ -44,7 +51,7 @@ const RowActions = <T extends DataItem>({
   };
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
-    if (event.key === 'Escape') {
+    if (event.key === "Escape") {
       setMenuOpen(false);
     }
   };
@@ -53,12 +60,12 @@ const RowActions = <T extends DataItem>({
   if (visibleActions.length === 1) {
     const action = visibleActions[0];
     const isDisabled = action.disabled && action.disabled(row);
-    
+
     return (
       <IconButton
         size={size}
-        variant={action.variant || 'outlined'}
-        color={action.color || 'neutral'}
+        variant={action.variant || "outlined"}
+        color={action.color || "neutral"}
         disabled={isDisabled}
         onClick={(e) => {
           e.stopPropagation();
@@ -81,30 +88,31 @@ const RowActions = <T extends DataItem>({
         slotProps={{
           root: {
             size,
-            variant: 'outlined',
-            color: 'neutral',
-            onClick: handleMenuToggle,
-            'aria-label': 'Row actions',
-            'aria-expanded': menuOpen,
-            'aria-haspopup': 'menu',
+            variant: "outlined",
+            color: "neutral",
+            // Remove manual onClick toggle, just stop propagation
+            onClick: (e: React.MouseEvent) => e.stopPropagation(),
+            "aria-label": "Row actions",
+            "aria-expanded": menuOpen,
+            "aria-haspopup": "menu",
           },
         }}
       >
         <MoreVertIcon />
       </MenuButton>
-      
+
       <Menu
         placement="bottom-end"
         size={size}
         onKeyDown={handleKeyDown}
         sx={{
-          minWidth: '160px',
+          minWidth: "160px",
           zIndex: 1000,
         }}
       >
         {visibleActions.map((action) => {
           const isDisabled = action.disabled && action.disabled(row);
-          
+
           return (
             <MenuItem
               key={action.key}
@@ -112,13 +120,14 @@ const RowActions = <T extends DataItem>({
               onClick={() => handleActionClick(action)}
               sx={{
                 gap: theme.spacing.sm,
-                color: action.color === 'danger' 
-                  ? theme.colors.danger 
-                  : theme.colors.text,
+                color:
+                  action.color === "danger"
+                    ? theme.colors.danger
+                    : theme.colors.text,
               }}
             >
               {action.icon && (
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                <Box sx={{ display: "flex", alignItems: "center" }}>
                   {action.icon}
                 </Box>
               )}
