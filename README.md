@@ -66,8 +66,7 @@ function App() {
 - **[Modal](./src/components/Modal/README.md)** - Customizable modal dialog component with backdrop blur and drop shadow effects
 - **[Accordion](./src/components/Accordion/README.md)** - Collapsible accordion component with multiple sections support
 - **[SearchBar](./src/components/SearchBar/README.md)** - Highly configurable search input with debouncing and advanced features
-
-📖 **[Full Card Documentation →](./src/components/Card/README.md)**
+- **[Card](./src/components/Card/README.md)** - Customizable card component for displaying content - **[Table](./src/components/Table/README.md)** - A comprehensive, feature-rich table component
 
 ## Development
 
