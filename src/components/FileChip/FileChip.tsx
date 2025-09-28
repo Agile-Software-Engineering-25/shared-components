@@ -228,7 +228,7 @@ const FileChip: React.FC<FileChipProps> = ({
           sx={{
             fontWeight: 'bold',
             textTransform: 'uppercase',
-            color: `${extensionColor}.solidColor` || "neutral.800",
+            color: `${extensionColor}.solidColor`,
           }}
         >
           {extension}
