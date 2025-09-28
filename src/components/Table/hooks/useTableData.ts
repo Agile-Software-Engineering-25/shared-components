@@ -1,10 +1,9 @@
-import { useMemo } from 'react';
-import type { DataItem, UseTableDataProps, UseTableDataReturn, SortConfig } from '../types';
-import { sortData, filterData, paginateData } from '../utils';
+import { useMemo } from "react";
+import type { DataItem, UseTableDataProps, UseTableDataReturn } from "../types";
+import { sortData, filterData, paginateData } from "../utils";
 
 const useTableData = <T extends DataItem>({
   data,
-  columns,
   filters = [],
   sortConfig,
   pagination,
@@ -16,7 +15,7 @@ const useTableData = <T extends DataItem>({
     const filterValues: Record<keyof T, any> = {} as Record<keyof T, any>;
     filters.forEach((filter) => {
       const value = (filter as any).value;
-      if (value !== undefined && value !== null && value !== '') {
+      if (value !== undefined && value !== null && value !== "") {
         filterValues[filter.key] = value;
       }
     });
@@ -45,7 +44,7 @@ const useTableData = <T extends DataItem>({
     const filterValues: Record<keyof T, any> = {} as Record<keyof T, any>;
     filters.forEach((filter) => {
       const value = (filter as any).value;
-      if (value !== undefined && value !== null && value !== '') {
+      if (value !== undefined && value !== null && value !== "") {
         filterValues[filter.key] = value;
       }
     });
@@ -64,7 +63,7 @@ const useTableData = <T extends DataItem>({
     error: null,
     refetch: () => {
       // This would be implemented for async data fetching
-      console.log('Refetching data...');
+      console.log("Refetching data...");
     },
   };
 };

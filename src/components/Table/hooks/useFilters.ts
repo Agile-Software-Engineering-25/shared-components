@@ -1,5 +1,5 @@
-import { useState, useCallback, useMemo } from 'react';
-import type { DataItem, Filter } from '../types';
+import { useState, useCallback, useMemo } from "react";
+import type { DataItem, Filter } from "../types";
 
 interface UseFiltersProps<T extends DataItem> {
   filters: Filter<T>[];
@@ -18,20 +18,20 @@ interface UseFiltersReturn<T extends DataItem> {
 }
 
 const useFilters = <T extends DataItem>({
-  filters,
   initialValues = {} as Record<keyof T, any>,
 }: UseFiltersProps<T>): UseFiltersReturn<T> => {
-  const [filterValues, setFilterValues] = useState<Record<keyof T, any>>(initialValues);
+  const [filterValues, setFilterValues] =
+    useState<Record<keyof T, any>>(initialValues);
 
   const setFilterValue = useCallback((key: keyof T, value: any) => {
-    setFilterValues(prev => ({
+    setFilterValues((prev) => ({
       ...prev,
       [key]: value,
     }));
   }, []);
 
   const clearFilter = useCallback((key: keyof T) => {
-    setFilterValues(prev => {
+    setFilterValues((prev) => {
       const newValues = { ...prev };
       delete newValues[key];
       return newValues;
@@ -46,19 +46,22 @@ const useFilters = <T extends DataItem>({
     setFilterValues(initialValues);
   }, [initialValues]);
 
-  const getFilterValue = useCallback((key: keyof T) => {
-    return filterValues[key];
-  }, [filterValues]);
+  const getFilterValue = useCallback(
+    (key: keyof T) => {
+      return filterValues[key];
+    },
+    [filterValues]
+  );
 
   const hasActiveFilters = useMemo(() => {
-    return Object.values(filterValues).some(value => 
-      value !== undefined && value !== null && value !== ''
+    return Object.values(filterValues).some(
+      (value) => value !== undefined && value !== null && value !== ""
     );
   }, [filterValues]);
 
   const activeFilterCount = useMemo(() => {
-    return Object.values(filterValues).filter(value => 
-      value !== undefined && value !== null && value !== ''
+    return Object.values(filterValues).filter(
+      (value) => value !== undefined && value !== null && value !== ""
     ).length;
   }, [filterValues]);
 

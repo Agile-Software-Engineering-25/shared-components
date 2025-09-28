@@ -1,32 +1,33 @@
-import React, { useState, useMemo } from 'react';
-import { Box } from '@mui/joy';
-import type { DataItem, TableProps } from '../types';
-import { useBreakpoint, useTableTheme, useSort, useFilters, useSelection } from '../hooks';
-import DesktopTable from './DesktopTable';
-import MobileTable from './MobileTable';
-import FilterBar from './FilterBar';
-import Pagination from './Pagination';
-import EmptyState from './EmptyState';
-import LoadingState from './LoadingState';
-import { sortData, filterData, paginateData } from '../utils';
+import React, { useState, useMemo } from "react";
+import { Box } from "@mui/joy";
+import type { DataItem, TableProps } from "../types";
+import {
+  useBreakpoint,
+  useTableTheme,
+  useSort,
+  useFilters,
+  useSelection,
+} from "../hooks";
+import DesktopTable from "./DesktopTable";
+import MobileTable from "./MobileTable";
+import FilterBar from "./FilterBar";
+import Pagination from "./Pagination";
+import EmptyState from "./EmptyState";
+import LoadingState from "./LoadingState";
+import { sortData, filterData, paginateData } from "../utils";
 
 const Table = <T extends DataItem>({
   data,
   config,
   className,
   style,
-  'data-testid': testId,
+  "data-testid": testId,
 }: TableProps<T>) => {
   const { isMobile } = useBreakpoint();
   const { theme } = useTableTheme({ customTheme: config.theme });
-  
+
   // State management hooks
-  const {
-    sortConfig,
-    handleSort,
-    getSortDirection,
-    isSorted,
-  } = useSort<T>();
+  const { sortConfig, handleSort, getSortDirection } = useSort<T>();
 
   const {
     filterValues,
@@ -39,26 +40,18 @@ const Table = <T extends DataItem>({
     filters: config.filters || [],
   });
 
-  const {
-    selectedIds,
-    isSelected,
-    isAllSelected,
-    isSomeSelected,
-    selectItem,
-    deselectItem,
-    toggleItem,
-    selectAll,
-    deselectAll,
-    toggleAll,
-  } = useSelection({
-    data,
-    mode: config.selectable?.mode || 'none',
-    selectableRowIds: config.selectable?.selectableRowIds,
-  });
+  const { selectedIds, isAllSelected, isSomeSelected, toggleItem, toggleAll } =
+    useSelection({
+      data,
+      mode: config.selectable?.mode || "none",
+      selectableRowIds: config.selectable?.selectableRowIds,
+    });
 
   const [filtersCollapsed, setFiltersCollapsed] = useState(false);
   const [currentPage, setCurrentPage] = useState(config.pagination?.page || 1);
-  const [currentPageSize, setCurrentPageSize] = useState(config.pagination?.pageSize || 10);
+  const [currentPageSize, setCurrentPageSize] = useState(
+    config.pagination?.pageSize || 10
+  );
 
   // Process data through filtering, sorting, and pagination
   const processedData = useMemo(() => {
@@ -105,22 +98,24 @@ const Table = <T extends DataItem>({
   };
 
   const handleSelectAll = () => {
-    if (config.selectable?.mode === 'multiple') {
+    if (config.selectable?.mode === "multiple") {
       toggleAll();
       if (config.selectable.onSelectionChange) {
-        config.selectable.onSelectionChange(isAllSelected ? new Set() : selectedIds);
+        config.selectable.onSelectionChange(
+          isAllSelected ? new Set() : selectedIds
+        );
       }
     }
   };
 
-  const handleSelectItem = (id: T['id']) => {
+  const handleSelectItem = (id: T["id"]) => {
     toggleItem(id);
     if (config.selectable?.onSelectionChange) {
       const newSelection = new Set(selectedIds);
       if (selectedIds.has(id)) {
         newSelection.delete(id);
       } else {
-        if (config.selectable.mode === 'single') {
+        if (config.selectable.mode === "single") {
           newSelection.clear();
         }
         newSelection.add(id);
@@ -147,7 +142,7 @@ const Table = <T extends DataItem>({
     return (
       <Box className={className} style={style} data-testid={testId}>
         <EmptyState
-          message={config.empty?.message || 'No data available'}
+          message={config.empty?.message || "No data available"}
           icon={config.empty?.icon}
           action={config.empty?.action}
         />
@@ -172,7 +167,7 @@ const Table = <T extends DataItem>({
         <EmptyState
           message="No results found for current filters"
           action={{
-            label: 'Clear filters',
+            label: "Clear filters",
             onClick: clearAllFilters,
           }}
         />
@@ -186,10 +181,10 @@ const Table = <T extends DataItem>({
       style={style}
       data-testid={testId}
       sx={{
-        width: '100%',
+        width: "100%",
         backgroundColor: theme.colors.surface,
-        borderRadius: 'var(--joy-radius-sm)',
-        overflow: 'hidden',
+        borderRadius: "var(--joy-radius-sm)",
+        overflow: "hidden",
         boxShadow: theme.shadows.sm,
       }}
     >
@@ -213,7 +208,7 @@ const Table = <T extends DataItem>({
           data={paginatedData}
           mobileConfig={config.mobileConfig}
           actions={config.actions}
-          selectable={config.selectable?.mode !== 'none'}
+          selectable={config.selectable?.mode !== "none"}
           selectedIds={selectedIds}
           onSelectItem={handleSelectItem}
           onRowClick={config.onRowClick}
@@ -225,7 +220,7 @@ const Table = <T extends DataItem>({
           columns={config.columns}
           actions={config.actions}
           sortable={config.sortable}
-          selectable={config.selectable?.mode !== 'none'}
+          selectable={config.selectable?.mode !== "none"}
           selectedIds={selectedIds}
           onSort={handleSort}
           getSortDirection={getSortDirection}

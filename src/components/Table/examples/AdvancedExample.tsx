@@ -1,7 +1,5 @@
 import React, { useState, useMemo } from "react";
 import { Avatar, Chip, Box, IconButton } from "@mui/joy";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
 import StarIcon from "@mui/icons-material/Star";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import PersonIcon from "@mui/icons-material/Person";
@@ -203,7 +201,7 @@ const AdvancedExample: React.FC = () => {
         sortable: true,
         width: "120px",
         align: "center",
-        render: (value, employee) => (
+        render: (value, _employee) => (
           <Chip
             variant="soft"
             color={getPerformanceColor(value as number)}

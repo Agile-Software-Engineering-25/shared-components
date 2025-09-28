@@ -45,11 +45,6 @@ const RowActions = <T extends DataItem>({
     setMenuOpen(false);
   };
 
-  const handleMenuToggle = (event: React.MouseEvent) => {
-    event.stopPropagation();
-    setMenuOpen(!menuOpen);
-  };
-
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === "Escape") {
       setMenuOpen(false);
