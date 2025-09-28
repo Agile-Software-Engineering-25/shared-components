@@ -112,7 +112,7 @@ const FileChip: React.FC<FileChipProps> = ({
       sx={{
         display: 'flex',
         alignItems: 'stretch',
-        borderRadius: '10px',
+        borderRadius: '20px',
         overflow: 'hidden',
         cursor: onClick ? 'pointer' : 'default',
         transition: 'all 0.2s ease-in-out',
@@ -120,7 +120,6 @@ const FileChip: React.FC<FileChipProps> = ({
           transform: 'translateY(-1px)',
           boxShadow: '0px 3px 12px rgba(0, 0, 0, 0.15)',
         } : {},
-        minHeight: '40px',
         width: 'fit-content',
         ...containerSX,
       }}
@@ -132,11 +131,11 @@ const FileChip: React.FC<FileChipProps> = ({
           flex: 1,
           border: '2px solid',
           borderColor: 'primary.500',
-          borderTopLeftRadius: '8px',
-          borderBottomLeftRadius: '8px',
+          borderTopLeftRadius: '20px',
+          borderBottomLeftRadius: '20px',
           ...(!(showFileExtension && extension) && {
-            borderTopRightRadius: '8px',
-            borderBottomRightRadius: '8px',
+            borderTopRightRadius: '20px',
+            borderBottomRightRadius: '20px',
           }),
           ...(showFileExtension && extension && {
             borderRight: 'none',
@@ -217,8 +216,8 @@ const FileChip: React.FC<FileChipProps> = ({
           px: 1.5,
           border: '2px solid',
           borderColor: mode === 'light' ? `${extensionColor}.500` : 'primary.500',
-          borderTopRightRadius: '8px',
-          borderBottomRightRadius: '8px',
+          borderTopRightRadius: '20px',
+          borderBottomRightRadius: '20px',
           borderLeft: 'none',
           ...extensionSX,
         }}
