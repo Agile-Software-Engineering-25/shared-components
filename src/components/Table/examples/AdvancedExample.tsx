@@ -257,27 +257,6 @@ const AdvancedExample: React.FC = () => {
         hideOnMobile: true,
       },
     ],
-    actions: [
-      {
-        key: "edit",
-        label: "Edit Employee",
-        icon: <EditIcon />,
-        onClick: (employee) => alert(`Edit ${employee.fullName}`),
-        color: "primary",
-      },
-      {
-        key: "delete",
-        label: "Delete Employee",
-        icon: <DeleteIcon />,
-        onClick: (employee) => {
-          if (confirm(`Delete ${employee.fullName}?`)) {
-            alert("Employee deleted");
-          }
-        },
-        color: "danger",
-        disabled: (employee) => employee.status === "active", // Can't delete active employees
-      },
-    ],
     selectable: {
       mode: "multiple",
       selectedIds,
