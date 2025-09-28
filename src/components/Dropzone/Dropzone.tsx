@@ -54,10 +54,10 @@ const Dropzone: React.FC<DropzoneProps> = ({
             alignItems: "center",
             transition: 'all 120ms ease',
             borderColor: 'var(--joy-palette-primary-500)',
-            backgroundColor: 'var(--joy-palette-primary-softBg)',
+            backgroundColor: 'var(--joy-palette-neutral-softBg)',
             '&:hover': {
               borderColor: 'var(--joy-palette-primary-outlinedBorder)',
-              backgroundColor: 'var(--joy-palette-primary-softBg)'
+              backgroundColor: 'var(--joy-palette-neutral-softBg)'
             }
           }}
       >
@@ -65,11 +65,9 @@ const Dropzone: React.FC<DropzoneProps> = ({
           <DownloadIcon sx={{ horizontalAlign: 'middle', mr: 1 }} />
           {dragDropText}
         </Typography>
-        <Button sx={{ mt: 2, alignSelf: 'center' }}>
-          <Typography level="body-md" sx={{ display: 'inline-flex', alignItems: 'center' }} color='white'>
+        <Button sx={{ mt: 2, alignSelf: 'center' }} variant="solid">
             {browseText}
             <SearchIcon sx={{ horizontalAlign: 'middle', ml: 1 }} />
-          </Typography>
         </Button>
         {types && types.length > 0 && (
           <Typography level="body-sm" sx={{ mt: 1, opacity: 0.7 }} color="neutral">
