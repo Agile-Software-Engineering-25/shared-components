@@ -1,26 +1,31 @@
 # Shared Components
 
-A TypeScript-based React component library built with Material-UI Joy, designed to be used as a submodule in frontend projects.
-
+A TypeScript-based React component library built with Material-UI Joy.
 
 ## Installation
 
-See the [frontend-template](https://github.com/Agile-Software-Engineering-25/frontend-template) project for how to use it. Other uses are not supported.
+Install the package with npm:
+
+```bash
+npm install @agile-software/shared-components
+```
+
+## Migration
+
+If you are upgrading from an older version of @agile-software/shared-components, please see the full [Migration Guide](https://agile-software-engineering-25.github.io/documentation/docs/frontend/shared-components/migration-guide).
 
 ## Features
 
-### Custom Themes  
+### Custom Themes
 
-As of **v2.0.0**, the old `createCustomTheme` function was **split** into two separate functions:  
+The library provides two fixed theme creators based on our design tokens (colors, typography, fonts):
 
-- `createCustomJoyTheme()` → for [MUI Joy](https://mui.com/joy-ui/getting-started/overview/)  
-- `createCustomMuiTheme()` → for [MUI Material](https://mui.com/material-ui/getting-started/overview/)  
+- `createCustomJoyTheme()` → for [MUI Joy](https://mui.com/joy-ui/getting-started/overview/)
+- `createCustomMuiTheme()` → for [MUI Material](https://mui.com/material-ui/getting-started/overview/)
 
-⚠️ **Important:** Unlike the old `createCustomTheme`, the new theme creators **no longer accept configuration overrides**. They return a fixed theme with our design tokens (colors, typography, fonts).  
+⚠️ Important: These functions return fixed themes and do not accept configuration overrides.
 
-For migration instructions, see the full [Migration Guide](https://agile-software-engineering-25.github.io/documentation/docs/frontend/shared-components/migration-guide).
-
-Usage example:  
+Usage example:
 
 ```tsx
 import React from "react";
@@ -53,93 +58,16 @@ function App() {
 
 ## Available Components
 
-### Table
+> ⚠️ **Note on Buttons:**
+> This library does **not** provide custom shared button components.
+> Use the standard [Joy UI `Button`](https://mui.com/joy-ui/react-button/) or [Joy UI `IconButton`](https://mui.com/joy-ui/react-button/#icon-button) instead.
+> Any styling requirements should be handled through the theme or joy API.
 
-A comprehensive, feature-rich data table component with responsive design, advanced filtering, sorting, pagination, and customization options.
+- **[Modal](./src/components/Modal/README.md)** - Customizable modal dialog component with backdrop blur and drop shadow effects
+- **[Accordion](./src/components/Accordion/README.md)** - Collapsible accordion component with multiple sections support
+- **[SearchBar](./src/components/SearchBar/README.md)** - Highly configurable search input with debouncing and advanced features
 
-```tsx
-import { Table, createTableBuilder } from '@agile-software/shared-components';
-import { useState } from 'react';
-
-interface User {
-  id: number;
-  name: string;
-  email: string;
-  role: string;
-}
-
-function MyComponent() {
-  const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set());
-  
-  const users: User[] = [
-    { id: 1, name: 'John Doe', email: 'john@example.com', role: 'Admin' },
-    { id: 2, name: 'Jane Smith', email: 'jane@example.com', role: 'User' },
-  ];
-
-  const config = createTableBuilder<User>()
-    .addColumn('name', 'Name', { sortable: true })
-    .addColumn('email', 'Email', { sortable: true })
-    .addColumn('role', 'Role')
-    .enableSelection('multiple', { selectedIds, onSelectionChange: setSelectedIds })
-    .enableSorting()
-    .enablePagination()
-    .build();
-
-  return <Table data={users} config={config} />;
-}
-```
-
-**Key Features:**
-- 🎨 Responsive Design (desktop/mobile layouts)
-- 🔄 Multi-column sorting with visual indicators
-- 🔍 Advanced filtering system (text, select, date, number)
-- 📄 Built-in pagination with customizable page sizes
-- ✅ Single or multiple row selection
-- 🎭 Row-level actions with dropdown menus
-- 🎯 Full accessibility and keyboard navigation
-- 🎨 Customizable theming
-- 📱 Mobile-optimized card layout
-- 🏗️ Easy configuration using builder pattern
-
-For detailed documentation, see the [Table README](src/components/Table/README.md).
-
-### Modal
-
-A customizable modal dialog component with backdrop blur and drop shadow effects.
-
-```tsx
-import { Modal } from '@agile-software/shared-components';
-import { useState } from 'react';
-
-function MyComponent() {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <>
-      <Button onClick={() => setOpen(true)}>Open Modal</Button>
-      <Modal
-        header="Modal Title"
-        open={open}
-        setOpen={setOpen}
-        disableEscape={false}
-      >
-        <p>Modal content goes here</p>
-        <Button onClick={() => setOpen(false)}>Close</Button>
-      </Modal>
-    </>
-  );
-}
-```
-
-**Props:**
-
-- `header`: string - The title displayed at the top of the modal
-- `open`: boolean - Controls whether the modal is visible
-- `setOpen`: (open: boolean) => void - Function to control modal open/close state  
-- `disableEscape`: boolean (optional) - Whether to disable closing with escape key
-- `modalSX`: SxProps (optional) - Additional styles for the modal backdrop
-- `modalDialogSX`: SxProps (optional) - Additional styles for the modal dialog
-- `children`: ReactNode - The content to be rendered inside the modal
+📖 **[Full Card Documentation →](./src/components/Card/README.md)**
 
 ## Development
 
@@ -170,4 +98,4 @@ For contributing see the documentation: [Contriution Guide Docusaurus](https://a
 
 ## Support
 
-If you encounter any problems reach out to Alexander Jablonowski or Team 15.
+If you encounter any problems reach out to Alexander Jablonowski (@EcoFreshKase) or Simon Dietrich (@py-bay).

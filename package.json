@@ -1,6 +1,6 @@
 {
   "name": "@agile-software/shared-components",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Shared component library for frontend projects",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -72,10 +72,13 @@
     "url": "git+https://github.com/Agile-Software-Engineering-25/shared-components.git"
   },
   "publishConfig": {
-    "access": "restricted"
+    "access": "public"
   },
   "optionalDependencies": {
     "@rollup/rollup-darwin-arm64": "^4.46.2",
     "@rollup/rollup-linux-x64-gnu": "^4.46.2"
+  },
+  "dependencies": {
+    "@mui/icons-material": "^7.3.2"
   }
 }
