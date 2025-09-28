@@ -1,7 +1,7 @@
-import React, { type ReactNode } from 'react';
-import { Box, Checkbox } from '@mui/joy';
-import type { DataItem } from '../types';
-import { useTableTheme } from '../hooks';
+import React, { type ReactNode } from "react";
+import { Box, Checkbox } from "@mui/joy";
+import type { DataItem } from "../types";
+import { useTableTheme } from "../hooks";
 
 interface TableRowProps<T extends DataItem> {
   row: T;
@@ -34,10 +34,13 @@ const TableRow = <T extends DataItem>({
   const handleClick = (e: React.MouseEvent) => {
     // Don't trigger row click when clicking on checkbox or actions
     const target = e.target as HTMLElement;
-    if (target.closest('[role="checkbox"]') || target.closest('[data-table-action]')) {
+    if (
+      target.closest('[role="checkbox"]') ||
+      target.closest("[data-table-action]")
+    ) {
       return;
     }
-    
+
     if (onClick) {
       onClick(row, index);
     }
@@ -50,7 +53,7 @@ const TableRow = <T extends DataItem>({
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' || e.key === ' ') {
+    if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
       if (onClick) {
         onClick(row, index);
@@ -65,21 +68,21 @@ const TableRow = <T extends DataItem>({
       onClick={handleClick}
       onDoubleClick={handleDoubleClick}
       onKeyDown={handleKeyDown}
-      role={onClick ? 'button' : undefined}
+      role={onClick ? "button" : undefined}
       tabIndex={onClick ? 0 : undefined}
       sx={{
-        backgroundColor: selected 
-          ? theme.colors.surfaceSelected 
-          : 'transparent',
-        cursor: onClick ? 'pointer' : 'default',
-        '&:hover': {
-          backgroundColor: selected 
-            ? theme.colors.surfaceSelected 
+        backgroundColor: selected
+          ? theme.colors.surfaceSelected
+          : "transparent",
+        cursor: onClick ? "pointer" : "default",
+        "&:hover": {
+          backgroundColor: selected
+            ? theme.colors.surfaceSelected
             : theme.colors.surfaceHover,
         },
-        '&:focus': {
+        "&:focus": {
           outline: `2px solid ${theme.colors.primary}`,
-          outlineOffset: '-2px',
+          outlineOffset: "-2px",
         },
       }}
     >
@@ -88,9 +91,8 @@ const TableRow = <T extends DataItem>({
           component="td"
           sx={{
             padding: theme.spacing.md,
-            borderBottom: `1px solid ${theme.colors.border}`,
-            width: '48px',
-            minWidth: '48px',
+            width: "48px",
+            minWidth: "48px",
           }}
         >
           <Checkbox

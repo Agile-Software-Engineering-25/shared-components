@@ -1,11 +1,11 @@
-import React from 'react';
-import { Box, Table as JoyTable } from '@mui/joy';
-import type { DataItem, Column, Action } from '../types';
-import { useTableTheme } from '../hooks';
-import TableHeader from './TableHeader';
-import TableRow from './TableRow';
-import TableCell from './TableCell';
-import RowActions from './RowActions';
+import React from "react";
+import { Box, Table as JoyTable } from "@mui/joy";
+import type { DataItem, Column, Action } from "../types";
+import { useTableTheme } from "../hooks";
+import TableHeader from "./TableHeader";
+import TableRow from "./TableRow";
+import TableCell from "./TableCell";
+import RowActions from "./RowActions";
 
 interface DesktopTableProps<T extends DataItem> {
   data: T[];
@@ -13,11 +13,11 @@ interface DesktopTableProps<T extends DataItem> {
   actions?: Action<T>[];
   sortable?: boolean;
   selectable?: boolean;
-  selectedIds?: Set<T['id']>;
+  selectedIds?: Set<T["id"]>;
   onSort?: (key: keyof T) => void;
-  getSortDirection?: (key: keyof T) => 'asc' | 'desc' | null;
+  getSortDirection?: (key: keyof T) => "asc" | "desc" | null;
   onSelectAll?: () => void;
-  onSelectItem?: (id: T['id']) => void;
+  onSelectItem?: (id: T["id"]) => void;
   isAllSelected?: boolean;
   isSomeSelected?: boolean;
   onRowClick?: (row: T, index: number) => void;
@@ -51,21 +51,22 @@ const DesktopTable = <T extends DataItem>({
   return (
     <Box
       sx={{
-        width: '100%',
-        height: fullScreen ? '100vh' : 'auto',
-        overflow: 'auto',
+        width: "100%",
+        height: fullScreen ? "100vh" : "auto",
+        overflow: "auto",
         border: `1px solid ${theme.colors.border}`,
-        borderRadius: 'var(--joy-radius-sm)',
+        borderRadius: "var(--joy-radius-sm)",
         boxShadow: theme.shadows.sm,
       }}
     >
       <JoyTable
         stickyHeader={stickyHeader}
         sx={{
-          width: '100%',
-          minWidth: '100%',
-          tableLayout: 'fixed',
-          borderCollapse: 'collapse',
+          width: "100%",
+          minWidth: "100%",
+          tableLayout: "fixed",
+          borderCollapse: "separate",
+          borderSpacing: 0,
         }}
       >
         <TableHeader
@@ -79,7 +80,7 @@ const DesktopTable = <T extends DataItem>({
           isSomeSelected={isSomeSelected}
           sticky={stickyHeader}
         />
-        
+
         <Box component="tbody">
           {data.map((row, index) => (
             <TableRow
@@ -102,23 +103,18 @@ const DesktopTable = <T extends DataItem>({
                   value={row[column.key]}
                 />
               ))}
-              
+
               {actions.length > 0 && (
                 <Box
                   component="td"
                   sx={{
                     padding: theme.spacing.md,
-                    borderBottom: `1px solid ${theme.colors.border}`,
-                    width: '120px',
-                    minWidth: '120px',
+                    width: "120px",
+                    minWidth: "120px",
                   }}
                   data-table-action
                 >
-                  <RowActions
-                    row={row}
-                    index={index}
-                    actions={actions}
-                  />
+                  <RowActions row={row} index={index} actions={actions} />
                 </Box>
               )}
             </TableRow>
