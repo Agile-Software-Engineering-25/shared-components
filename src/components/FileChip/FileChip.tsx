@@ -84,7 +84,7 @@ const getExtensionColor = (extension: string): keyof Theme['vars']['palette'] =>
  * with optional extension block, delete button, and download functionality.
  *
  * @param {FileChipProps} props - The props for the FileChip component
- * @param {string} props.filename - The filename to display
+ * @param {string} props.filename - The filename to display with file extension
  * @param {boolean} [props.showFileExtension=true] - Whether to show the file extension as a colored block
  * @param {function} [props.onDelete] - Optional callback for delete action (shows X icon when provided)
  * @param {function} [props.onClick] - Optional callback for click action (entire chip becomes clickable)
