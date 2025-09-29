@@ -14,6 +14,10 @@ export { createCustomJoyTheme, createCustomMuiTheme } from "./theme/theme";
 export * from "./components/Table/utils";
 export * from "./components/Table/hooks";
 
+// Export table examples
+export { default as TableExampleBasic } from "./components/Table/examples/BasicExample";
+export { default as TableExampleAdvanced } from "./components/Table/examples/AdvancedExample";
+
 // Export types
 export type {
   SearchBarProps,
