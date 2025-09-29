@@ -59,13 +59,14 @@ function App() {
 ## Available Components
 
 > ⚠️ **Note on Buttons:**
-This library does **not** provide custom shared button components.
-Use the standard [Joy UI `Button`](https://mui.com/joy-ui/react-button/) or [Joy UI `IconButton`](https://mui.com/joy-ui/react-button/#icon-button) instead.
-Any styling requirements should be handled through the theme or joy API.
+> This library does **not** provide custom shared button components.
+> Use the standard [Joy UI `Button`](https://mui.com/joy-ui/react-button/) or [Joy UI `IconButton`](https://mui.com/joy-ui/react-button/#icon-button) instead.
+> Any styling requirements should be handled through the theme or joy API.
 
 - **[Modal](./src/components/Modal/README.md)** - Customizable modal dialog component with backdrop blur and drop shadow effects
 - **[Accordion](./src/components/Accordion/README.md)** - Collapsible accordion component with multiple sections support
 - **[SearchBar](./src/components/SearchBar/README.md)** - Highly configurable search input with debouncing and advanced features
+- **[Table](./src/components/Table/README.md)** - A comprehensive, feature-rich table component
 - **[FileChip](./src/components/FileChip/README.md)** - Compact file display component with extension coloring, delete and download functionality
 - **[Card](./src/components/Card/README.md)** - Highly configurable card
 - **[Dropzone](./src/components/Dropzone/Readme.md)** - Dropzone and file picker. Supports single and multiple files
