@@ -136,7 +136,7 @@ const FileChip: React.FC<FileChipProps> = ({
           alignItems: "stretch",
           flex: 1,
           border: "2px solid",
-          borderColor: "primary.500",
+          borderColor: mode === "light" ? "primary.500" : "neutral.200",
           borderTopLeftRadius: "20px",
           borderBottomLeftRadius: "20px",
           ...(!(showFileExtension && extension) && {
@@ -160,7 +160,7 @@ const FileChip: React.FC<FileChipProps> = ({
             <IconButton
               size="lg"
               variant="plain"
-              color="primary"
+              color={mode === "light" ? "primary" : "neutral"}
               onClick={(e) => {
                 e.stopPropagation();
                 onDelete();
@@ -224,7 +224,7 @@ const FileChip: React.FC<FileChipProps> = ({
             minWidth: "50px",
             px: 1.5,
             border: "2px solid",
-            borderColor: "primary.500",
+            borderColor: mode === "light" ? "primary.500" : "neutral.200",
             borderTopRightRadius: "20px",
             borderBottomRightRadius: "20px",
             borderLeft: "none",
@@ -236,10 +236,11 @@ const FileChip: React.FC<FileChipProps> = ({
             sx={{
               fontWeight: "bold",
               textTransform: "uppercase",
-              color:
-                mode === "dark" && extensionColor === "primary"
+              color: extensionColor
+                ? mode === "dark" && extensionColor === "primary"
                   ? "#193039"
-                  : `${extensionColor}.solidColor`,
+                  : `${extensionColor}.solidColor`
+                : "neutral.500",
             }}
           >
             {extension}
