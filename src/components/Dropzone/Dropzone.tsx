@@ -65,7 +65,7 @@ const Dropzone: React.FC<DropzoneProps> = ({
           <DownloadIcon sx={{ horizontalAlign: 'middle', mr: 1 }} />
           {dragDropText}
         </Typography>
-        <Button sx={{ mt: 2, alignSelf: 'center' }} variant="solid">
+        <Button sx={{ mt: 1.75, alignSelf: 'center' }} variant="solid">
             {browseText}
             <SearchIcon sx={{ horizontalAlign: 'middle', ml: 1 }} />
         </Button>
