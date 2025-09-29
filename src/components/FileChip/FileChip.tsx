@@ -231,7 +231,7 @@ const FileChip: React.FC<FileChipProps> = ({
               mode === 'dark' && extensionColor === 'primary'
                 ? '#193039'
                 : `${extensionColor}.solidColor`,
-                  }}
+          }}
         >
           {extension}
         </Typography>
