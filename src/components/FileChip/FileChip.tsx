@@ -227,8 +227,11 @@ const FileChip: React.FC<FileChipProps> = ({
           sx={{
             fontWeight: 'bold',
             textTransform: 'uppercase',
-            color: `${extensionColor}.solidColor`,
-          }}
+            color:
+              mode === 'dark' && extensionColor === 'primary'
+                ? '#193039'
+                : `${extensionColor}.solidColor`,
+                  }}
         >
           {extension}
         </Typography>
