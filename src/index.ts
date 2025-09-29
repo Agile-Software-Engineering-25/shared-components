@@ -3,7 +3,6 @@ export { default as Modal } from "./components/Modal/Modal";
 export { default as SearchBar } from "./components/SearchBar/SearchBar";
 export { default as Accordion } from "./components/Accordion/Accordion";
 export { default as Dropzone } from './components/Dropzone/Dropzone';
-export { default as SearchBar } from './components/SearchBar/SearchBar';
 export { default as Card } from "./components/Card/Card";
 export { default as FileChip } from './components/FileChip/FileChip';
 export { Table } from "./components/Table";
