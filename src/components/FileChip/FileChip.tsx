@@ -187,7 +187,7 @@ const FileChip: React.FC<FileChipProps> = ({
                 minWidth: "28px",
                 minHeight: "28px",
                 "&:hover": {
-                  backgroundColor: "danger.50",
+                  backgroundColor: "transparent",
                   color: "danger.500",
                 },
                 "& svg": {
