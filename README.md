@@ -69,7 +69,7 @@ function App() {
 - **[Table](./src/components/Table/README.md)** - A comprehensive, feature-rich table component
 - **[FileChip](./src/components/FileChip/README.md)** - Compact file display component with extension coloring, delete and download functionality
 - **[Card](./src/components/Card/README.md)** - Highly configurable card
-- **[Dropzone](./src/components/Dropzone/Readme.md)** - Dropzone and file picker. Supports single and multiple files
+- **[Dropzone](./src/components/Dropzone/README.md)** - Dropzone and file picker. Supports single and multiple files
 
 ## Development
 
