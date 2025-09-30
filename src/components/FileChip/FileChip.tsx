@@ -1,5 +1,11 @@
 import React from "react";
-import { Box, IconButton, Typography, useColorScheme } from "@mui/joy";
+import {
+  Box,
+  IconButton,
+  Typography,
+  useColorScheme,
+  useTheme,
+} from "@mui/joy";
 import { Close as CloseIcon } from "@mui/icons-material";
 import type { SxProps } from "@mui/joy/styles/types";
 import type { Theme } from "@mui/joy/styles";
@@ -109,6 +115,18 @@ const FileChip: React.FC<FileChipProps> = ({
     showFileExtension && extension ? nameWithoutExtension : filename;
   const extensionColor = getExtensionColor(extension);
   const { mode } = useColorScheme();
+  const theme = useTheme();
+
+  const extensionTextColor = (() => {
+    switch (true) {
+      case mode === "dark" && extensionColor === "primary":
+        return "#193039";
+      case !!extensionColor:
+        return `${extensionColor}.solidColor`;
+      default:
+        return theme.colorSchemes.light.palette.primary[500];
+    }
+  })();
 
   const chipContent = (
     <Box
@@ -236,11 +254,7 @@ const FileChip: React.FC<FileChipProps> = ({
             sx={{
               fontWeight: "bold",
               textTransform: "uppercase",
-              color: extensionColor
-                ? mode === "dark" && extensionColor === "primary"
-                  ? "#193039"
-                  : `${extensionColor}.solidColor`
-                : "neutral.500",
+              color: extensionTextColor,
             }}
           >
             {extension}
