@@ -1,55 +1,62 @@
-import React from 'react';
-import { Box, IconButton, Typography, useColorScheme } from '@mui/joy';
-import { Close as CloseIcon } from '@mui/icons-material';
-import type { SxProps } from '@mui/joy/styles/types';
-import type { Theme } from '@mui/joy/styles';
+import React from "react";
+import {
+  Box,
+  IconButton,
+  Typography,
+  useColorScheme,
+  useTheme,
+} from "@mui/joy";
+import { Close as CloseIcon } from "@mui/icons-material";
+import type { SxProps } from "@mui/joy/styles/types";
+import type { Theme } from "@mui/joy/styles";
 
-const FILE_EXTENSION_COLORS: Record<string, keyof Theme['vars']['palette']> = {
-  // Documents
-  pdf: 'danger',
-  doc: 'primary',
-  docx: 'primary',
-  txt: 'neutral',
-  rtf: 'neutral',
+const FILE_EXTENSION_COLORS: Record<string, keyof Theme["vars"]["palette"]> = {
+  // text
+  doc: "primary",
+  docx: "primary",
+  pdf: "primary",
+  txt: "primary",
+  md: "primary",
+  rtf: "primary",
 
-  // Images
-  jpg: 'success',
-  jpeg: 'success',
-  png: 'success',
-  gif: 'success',
-  svg: 'success',
-  webp: 'success',
+  // tables and code
+  csv: "success",
+  json: "success",
+  js: "success",
+  ts: "success",
+  jsx: "success",
+  tsx: "success",
+  py: "success",
+  java: "success",
+  cpp: "success",
+  c: "success",
+  html: "success",
+  css: "success",
+  xlsx: "success",
+  xls: "success",
 
-  // Code
-  js: 'warning',
-  ts: 'primary',
-  jsx: 'primary',
-  tsx: 'primary',
-  py: 'primary',
-  java: 'warning',
-  cpp: 'primary',
-  c: 'primary',
-  html: 'danger',
-  css: 'primary',
+  // images, audio, video
+  jpg: "warning",
+  jpeg: "warning",
+  png: "warning",
+  svg: "warning",
+  mp3: "warning",
+  gif: "warning",
+  wav: "warning",
+  avi: "warning",
+  mkv: "warning",
+  mp4: "warning",
+  webp: "warning",
 
-  // Archives
-  zip: 'neutral',
-  rar: 'neutral',
-  tar: 'neutral',
-  gz: 'neutral',
-
-  // Spreadsheets
-  xlsx: 'success',
-  xls: 'success',
-  csv: 'success',
-
-  // Presentations
-  pptx: 'warning',
-  ppt: 'warning',
-
-  // Default
-  default: 'neutral'
+  // presentation and zip-files
+  ppt: "danger",
+  pptx: "danger",
+  zip: "danger",
+  rar: "danger",
+  tar: "danger",
+  gz: "danger",
 };
+const DEFAULT_EXTENSION_COLOR = "#C2CAD5";
 
 export interface FileChipProps {
   filename: string;
@@ -61,23 +68,25 @@ export interface FileChipProps {
 }
 
 const getFileExtension = (filename: string): string => {
-  const lastDotIndex = filename.lastIndexOf('.');
+  const lastDotIndex = filename.lastIndexOf(".");
   if (lastDotIndex === -1 || lastDotIndex === filename.length - 1) {
-    return '';
+    return "";
   }
   return filename.substring(lastDotIndex + 1).toLowerCase();
 };
 
 const getFileNameWithoutExtension = (filename: string): string => {
-  const lastDotIndex = filename.lastIndexOf('.');
+  const lastDotIndex = filename.lastIndexOf(".");
   if (lastDotIndex === -1) {
     return filename;
   }
   return filename.substring(0, lastDotIndex);
 };
 
-const getExtensionColor = (extension: string): keyof Theme['vars']['palette'] =>
-  FILE_EXTENSION_COLORS[extension] || FILE_EXTENSION_COLORS.default;
+const getExtensionColor = (
+  extension: string
+): keyof Theme["vars"]["palette"] | undefined =>
+  FILE_EXTENSION_COLORS[extension];
 
 /**
  * A file chip component that displays a filename in a pill-shaped container
@@ -102,71 +111,87 @@ const FileChip: React.FC<FileChipProps> = ({
 }: FileChipProps): JSX.Element => {
   const extension = getFileExtension(filename);
   const nameWithoutExtension = getFileNameWithoutExtension(filename);
-  const displayName = showFileExtension && extension ? nameWithoutExtension : filename;
+  const displayName =
+    showFileExtension && extension ? nameWithoutExtension : filename;
   const extensionColor = getExtensionColor(extension);
   const { mode } = useColorScheme();
+  const theme = useTheme();
+
+  const extensionTextColor = (() => {
+    switch (true) {
+      case mode === "dark" && extensionColor === "primary":
+        return "#193039";
+      case !!extensionColor:
+        return `${extensionColor}.solidColor`;
+      default:
+        return theme.colorSchemes.light.palette.primary[500];
+    }
+  })();
 
   const chipContent = (
     <Box
       onClick={onClick ? onClick : undefined}
       sx={{
-        display: 'flex',
-        alignItems: 'stretch',
-        borderRadius: '20px',
-        overflow: 'hidden',
-        cursor: onClick ? 'pointer' : 'default',
-        transition: 'all 0.2s ease-in-out',
-        '&:hover': onClick ? {
-          transform: 'translateY(-1px)',
-          boxShadow: '0px 3px 12px rgba(0, 0, 0, 0.15)',
-        } : {},
-        width: 'fit-content',
+        display: "flex",
+        alignItems: "stretch",
+        borderRadius: "20px",
+        overflow: "hidden",
+        cursor: onClick ? "pointer" : "default",
+        transition: "all 0.2s ease-in-out",
+        "&:hover": onClick
+          ? {
+              transform: "translateY(-1px)",
+              boxShadow: "0px 3px 12px rgba(0, 0, 0, 0.15)",
+            }
+          : {},
+        width: "fit-content",
         ...containerSX,
       }}
     >
       <Box
         sx={{
-          display: 'flex',
-          alignItems: 'stretch',
+          display: "flex",
+          alignItems: "stretch",
           flex: 1,
-          border: '2px solid',
-          borderColor: 'primary.500',
-          borderTopLeftRadius: '20px',
-          borderBottomLeftRadius: '20px',
+          border: "2px solid",
+          borderColor: mode === "light" ? "primary.500" : "neutral.200",
+          borderTopLeftRadius: "20px",
+          borderBottomLeftRadius: "20px",
           ...(!(showFileExtension && extension) && {
-            borderTopRightRadius: '20px',
-            borderBottomRightRadius: '20px',
+            borderTopRightRadius: "20px",
+            borderBottomRightRadius: "20px",
           }),
-          ...(showFileExtension && extension && {
-            borderRight: 'none',
-          }),
+          ...(showFileExtension &&
+            extension && {
+              borderRight: "none",
+            }),
         }}
       >
         {onDelete && (
           <Box
             sx={{
-              display: 'flex',
-              alignItems: 'center',
+              display: "flex",
+              alignItems: "center",
               pl: 1,
             }}
           >
             <IconButton
               size="lg"
               variant="plain"
-              color="primary"
+              color={mode === "light" ? "primary" : "neutral"}
               onClick={(e) => {
                 e.stopPropagation();
                 onDelete();
               }}
               sx={{
-                minWidth: '28px',
-                minHeight: '28px',
-                '&:hover': {
-                  backgroundColor: 'danger.50',
-                  color: 'danger.500',
+                minWidth: "28px",
+                minHeight: "28px",
+                "&:hover": {
+                  backgroundColor: "transparent",
+                  color: "danger.500",
                 },
-                '& svg': {
-                  fontSize: '1.5rem',
+                "& svg": {
+                  fontSize: "1.5rem",
                 },
               }}
             >
@@ -177,8 +202,8 @@ const FileChip: React.FC<FileChipProps> = ({
 
         <Box
           sx={{
-            display: 'flex',
-            alignItems: 'center',
+            display: "flex",
+            alignItems: "center",
             flex: 1,
             px: onDelete ? 1 : 2,
             py: 1,
@@ -188,12 +213,12 @@ const FileChip: React.FC<FileChipProps> = ({
             level="body-md"
             sx={{
               fontWeight: 500,
-              color: 'neutral',
-              userSelect: 'none',
-              whiteSpace: 'nowrap',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-              maxWidth: '300px',
+              color: "neutral",
+              userSelect: "none",
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              maxWidth: "300px",
             }}
             title={filename}
           >
@@ -202,39 +227,40 @@ const FileChip: React.FC<FileChipProps> = ({
         </Box>
       </Box>
 
-    {showFileExtension && extension && (
-      <Box
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: `${extensionColor}.solidBg`,
-          fontWeight: 'bold',
-          fontSize: '12px',
-          textTransform: 'uppercase',
-          minWidth: '50px',
-          px: 1.5,
-          border: '2px solid',
-          borderColor: mode === 'light' ? `${extensionColor}.500` : 'primary.500',
-          borderTopRightRadius: '20px',
-          borderBottomRightRadius: '20px',
-          borderLeft: 'none',
-          ...extensionSX,
-        }}
-      >
-        <Typography
-          level="body-sm"
+      {showFileExtension && extension && (
+        <Box
           sx={{
-            fontWeight: 'bold',
-            textTransform: 'uppercase',
-            color: `${extensionColor}.solidColor`,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: extensionColor
+              ? `${extensionColor}.solidBg`
+              : DEFAULT_EXTENSION_COLOR,
+            fontWeight: "bold",
+            fontSize: "12px",
+            textTransform: "uppercase",
+            minWidth: "50px",
+            px: 1.5,
+            border: "2px solid",
+            borderColor: mode === "light" ? "primary.500" : "neutral.200",
+            borderTopRightRadius: "20px",
+            borderBottomRightRadius: "20px",
+            borderLeft: "none",
+            ...extensionSX,
           }}
         >
-          {extension}
-        </Typography>
-      </Box>
-)}
-
+          <Typography
+            level="body-sm"
+            sx={{
+              fontWeight: "bold",
+              textTransform: "uppercase",
+              color: extensionTextColor,
+            }}
+          >
+            {extension}
+          </Typography>
+        </Box>
+      )}
     </Box>
   );
 
