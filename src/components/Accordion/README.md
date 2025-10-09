@@ -9,6 +9,8 @@ import { Accordion } from "@agile-software/shared-components";
 import { useState } from "react";
 
 function MyComponent() {
+  const [expanded, setExpanded] = useState<string | null>("section1");
+    
   const accordionItems = [
     {
       id: "section1",
@@ -18,7 +20,10 @@ function MyComponent() {
           <p>This is the content for the first section.</p>
           <p>It can contain any React elements.</p>
         </div>
-      )
+      ),
+      expanded: expanded === 'section1', 
+      onChange: (isExpanded: boolean) =>
+          setExpanded(isExpanded ? "section1" : null),  
     },
     {
       id: "section2",
@@ -31,7 +36,10 @@ function MyComponent() {
             <li>Option 2: Description</li>
           </ul>
         </div>
-      )
+      ),
+      expand: expanded === "section2",
+      onChange: (isExpanded: boolean) =>
+          setExpanded(isExpanded ? "section2" : null),
     },
     {
       id: "section3",
@@ -52,7 +60,7 @@ function MyComponent() {
 
 ## Props
 
-- `items`: AccordionItem[] - Array of accordion items with id, header, and children
+- `items`: AccordionItem[] - Array of accordion items with id, header, children, expand (optional) and onChange (optional)
 - `multiple`: boolean (optional, default: false) - Whether multiple sections can be open simultaneously
 - `defaultExpanded`: string | string[] (optional) - Default expanded section(s) by id
 - `accordionSX`: SxProps (optional) - Additional styles for individual accordion items
