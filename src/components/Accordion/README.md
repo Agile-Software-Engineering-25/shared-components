@@ -72,3 +72,6 @@ function MyComponent() {
 - `id`: string - Unique identifier for the accordion item
 - `header`: string - The title displayed in the accordion header
 - `children`: ReactNode - The content to be rendered when the section is expanded
+- `expand` : boolean - (Optional) Controls expansion externally. If set, overrides internal state. For example for sync with URL-parameters.
+- `onChnage` : (isExpanded: boolean) => void - (Optional) Callback triggered whenever the expansion state changes
+
