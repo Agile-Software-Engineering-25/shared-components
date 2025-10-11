@@ -218,7 +218,6 @@ const FileChip: React.FC<FileChipProps> = ({
               whiteSpace: "nowrap",
               overflow: "hidden",
               textOverflow: "ellipsis",
-              maxWidth: "300px",
             }}
             title={filename}
           >
