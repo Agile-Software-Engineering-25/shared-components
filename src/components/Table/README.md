@@ -241,6 +241,46 @@ const AdvancedTable: React.FC = () => {
 | `placeholder?`  | `string`                                                | Input placeholder    |
 | `defaultValue?` | `any`                                                   | Default filter value |
 
+### SelectionConfig
+
+| Property              | Type                                 | Description                                  |
+| --------------------- | ------------------------------------ | -------------------------------------------- |
+| `mode`                | `'single' \| 'multiple' \| 'none'`   | Selection mode                               |
+| `selectedIds`         | `Set<T['id']>`                       | Set of currently selected row IDs            |
+| `onSelectionChange`   | `(selectedIds: Set<T['id']>) => void` | Callback when selection changes              |
+| `selectableRowIds?`   | `Set<T['id']>`                       | Optional set of IDs that can be selected     |
+| `showSelectAll?`      | `boolean`                            | Show select all checkbox (default: true)     |
+
+**Important:** To enable row selection, you must explicitly configure the `selectable` property in your table config or call `.enableSelection()` when using the table builder. If `selectable` is not defined, no checkbox columns will be rendered. See the examples below for correct usage.
+
+#### Enabling Selection with Builder
+
+```tsx
+const config = createTableBuilder<User>()
+  .addColumn("name", "Name")
+  .addColumn("email", "Email")
+  .enableSelection("multiple", {
+    selectedIds,
+    onSelectionChange: setSelectedIds,
+  })
+  .build();
+```
+
+#### Table Without Selection
+
+If you don't call `.enableSelection()` or set `selectable` in the config, the table will **not** render checkbox columns:
+
+```tsx
+// No selection - checkboxes will NOT be rendered
+const config = createTableBuilder<User>()
+  .addColumn("name", "Name")
+  .addColumn("email", "Email")
+  .enableSorting()
+  .build();
+```
+
+For more examples, see `NoSelectionExample.tsx` and `SelectionComparisonExample.tsx` in the examples directory.
+
 ## Hooks
 
 The Table component provides several custom hooks for advanced usage:

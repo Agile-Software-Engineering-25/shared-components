@@ -208,7 +208,7 @@ const Table = <T extends DataItem>({
           data={paginatedData}
           mobileConfig={config.mobileConfig}
           actions={config.actions}
-          selectable={config.selectable?.mode !== "none"}
+          selectable={!!config.selectable && config.selectable.mode !== "none"}
           selectedIds={selectedIds}
           onSelectItem={handleSelectItem}
           onRowClick={config.onRowClick}
@@ -220,7 +220,7 @@ const Table = <T extends DataItem>({
           columns={config.columns}
           actions={config.actions}
           sortable={config.sortable}
-          selectable={config.selectable?.mode !== "none"}
+          selectable={!!config.selectable && config.selectable.mode !== "none"}
           selectedIds={selectedIds}
           onSort={handleSort}
           getSortDirection={getSortDirection}
