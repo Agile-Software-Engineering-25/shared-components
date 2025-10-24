@@ -130,7 +130,7 @@ const GenericAccordion: React.FC<AccordionProps> = ({
             </AccordionDetails>
           </MuiAccordion>
         );
-      })},
+      })}
     </AccordionGroup>
   );
 };
